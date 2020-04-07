@@ -105,7 +105,7 @@ function connexion()
                             $_SESSION['password'] = $resultatLogUser['password'];
                             $_SESSION['mail'] = $resultatLogUser['mail'];
                             $_SESSION['adresse'] = $resultatLogUser['adresse'];
-                            $_SESSION['rand'] = $resultatLogUser['rank'];
+                            $_SESSION['rank'] = $resultatLogUser['rank'];
                             
                             header('location:index.php');
                         }
@@ -129,7 +129,36 @@ function connexion()
 }
 
 
-function add
+function newCategorie()
+{
+    if ($_SESSION['rank'] == 'ADMIN') 
+    {
+       if (isset($_POST['addCategorie'])) 
+       {
+            $connexion = mysqli_connect('Localhost','root','','boutique');
+            $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
+            $queryCat = mysqli_query($connexion, $requeteCat);
+            $resultatCat = mysqli_fetch_all($queryCat);
+
+            
+            if (empty($resultatCat))
+            {
+                $requeteNewCat = "INSERT INTO categories (nom) VALUES ('".$_POST['categorie']."')";
+                $queryNewCat = mysqli_query($connexion, $requeteNewCat);
+                
+                header('location:index.php');   
+            }
+            else
+            {
+                echo "Cette categorie existe déja";
+            }
+        } 
+    }
+    else
+    {
+        header('location:index.php');
+    }
+}
 
 
 ?>
