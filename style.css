@@ -51,11 +51,11 @@ body{
     opacity: 0;
 }
 
-#sectionBottomHeaderDroite{
+/* #sectionBottomHeaderDroite{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-}
+} */
 
 #headerNavBar{
     list-style: none;
@@ -63,17 +63,37 @@ body{
     flex-direction: row;
     justify-content: flex-end;
     margin-right: 21%;
+    width: 80%;
+    height: 30px;
+    margin-left:20%;
 }
 
 #headerNavBar li{
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     align-items: center;
-    width: 8%;
+    justify-content: center;
+    height: 100%;
+    width: 15%;
+}
+
+#headerNavBar a{
+    text-decoration: none;
+    color:white;
+}
+
+#headerNavBar a:active{
+    text-decoration: none;
+    color:white;
+}
+
+#headerNavBar a:visited{
+    text-decoration: none;
+    color: white;
 }
 
 #iconAccount{
-    width: 18%;
+    width: 15%
 }
 
 #flexFull{
@@ -149,8 +169,26 @@ body{
     align-items: center;
 }
 
+#testTop a{
+    width: 10%;
+    text-decoration: none;
+    color:black;
+}
+
+#testTop a:active{
+    width: 10%;
+    text-decoration: none;
+    color:black;
+}
+
+#testTop a:visited{
+    width: 10%;
+    text-decoration: none;
+    color:black;
+}
+
 #cartIcon{
-    width: 2.5%;
+    width: 17%;
 }
 
 #partieCentreTop{
@@ -241,3 +279,26 @@ footer{
     align-items: center;
 }
 
+
+/*---------------Connexion---------------*/
+/*---------------Connexion---------------*/
+/*---------------Connexion---------------*/
+/*---------------Connexion---------------*/
+/*---------------Connexion---------------*/
+/*---------------Connexion---------------*/
+
+#connexionForm{
+    text-align: center;
+}
+
+
+/*---------------Inscription---------------*/
+/*---------------Inscription---------------*/
+/*---------------Inscription---------------*/
+/*---------------Inscription---------------*/
+/*---------------Inscription---------------*/
+/*---------------Inscription---------------*/
+
+#inscriptionForm{
+    text-align: center;
+}
