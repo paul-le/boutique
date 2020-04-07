@@ -28,6 +28,7 @@
 
 					include('fonctions.php');
 					connexion();
+					header('location:index.php');
 					?>
 				</form>
 

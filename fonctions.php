@@ -24,7 +24,7 @@ if(!isset($_SESSION['login'])){
                 {
                     $password = $_POST['password'];
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    $requeteNewUser = "INSERT INTO utilisateurs (login,password) VALUES ('".$_POST['login']."','".$passwordHash."')";
+                    $requeteNewUser = "INSERT INTO utilisateurs (login, password, mail, adresse, rank) VALUES ('".$_POST['login']."','".$passwordHash."', '".$_POST['mail']."', '".$_POST['adresse']."', 'MEMBRE')";
                     $queryNewUser = mysqli_query($connexion, $requeteNewUser);
                     header('location:connexion.php');
 
@@ -96,7 +96,7 @@ if(!isset($_SESSION['login'])){
                         session_start();
                         $_SESSION['id'] = $resultatLogUser[0];
                         $_SESSION['login'] = $resultatLogUser[1];
-                        header('location:index.php');
+                       
                     }
                     else
                     {

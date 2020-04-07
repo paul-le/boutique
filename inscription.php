@@ -16,9 +16,11 @@
 				<form action="" method="post" ><br />
 
 					<div id="formInscription">
-						Login :<br /> <input type="text" name="login"><br />
-						Mot de Passe :<br /><input type="password" name="password"><br />
-						Confirmation Mot de Passe : <br /><input type="password" name="confirmpassword"><br />
+						Login :<br /> <input type="text" name="login" required><br />
+						Mot de Passe :<br /><input type="password" name="password" required><br />
+						Confirmation Mot de Passe : <br /><input type="password" name="confirmpassword" required><br />
+						Mail :<br /> <input type="email" name="mail" required><br />
+						Adresse :<br /> <input type="text" name="adresse" required><br />
 					</div>
 					<div id="buttonInscription">
 						<input type="submit" name="valider">
