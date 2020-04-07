@@ -9,6 +9,7 @@
 <body>
     <?php
     include('header.php');
+    
     ?>
     <main>
     <section id="flexFull">
@@ -19,6 +20,7 @@
                 <section id="testTop">
                     <img id="cartIcon" src="Images/carticonpng.png"> Mon panier
                 </section>
+            
                 <section id="partieCentre">
                     <img src="Images/banniere.jpg">
                 </section>
@@ -51,7 +53,7 @@
     </main>
     <?php
     include('footer.php');
-
+    var_dump($_SESSION['login']);
     ?>
 </body>
 </html>

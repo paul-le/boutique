@@ -17,6 +17,9 @@
                         <img id="iconAccount" src="Images/iconacc.png">
                         Toast
                     </li>
+                    <li>
+                        <a href="deconnect.php">DECO</a>
+                    </li>
                     
                 </ul>
             </section>
