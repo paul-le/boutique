@@ -12,20 +12,20 @@ if(!isset($_SESSION['login'])){
         if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['confirmpassword']) )
         {
     
-            $connexion=mysqli_connect('localhost','root','','camping');
-            $requete0="SELECT * FROM utilisateurs WHERE login='".$_POST['login']."'";
-            $query0=mysqli_query($connexion,$requete0);
-            $resultat0=mysqli_fetch_row($query0);
+            $connexion = mysqli_connect('localhost','root','','boutique');
+            $requeteUser = "SELECT * FROM utilisateurs WHERE login='".$_POST['login']."'";
+            $queryUser = mysqli_query($connexion, $requeteUser);
+            $resultatUser = mysqli_fetch_row($queryUser);
     
-            if($resultat0==0)
+            if($resultatUser == 0)
             {
     
                 if($_POST['password']==$_POST['confirmpassword'])
                 {
-                    $password=$_POST['password'];
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $requete= "INSERT INTO utilisateurs (login,password) VALUES ('".$_POST['login']."','".$hashed_password."')";
-                    $query=mysqli_query($connexion,$requete);
+                    $password = $_POST['password'];
+                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                    $requeteNewUser = "INSERT INTO utilisateurs (login,password) VALUES ('".$_POST['login']."','".$passwordHash."')";
+                    $queryNewUser = mysqli_query($connexion, $requeteNewUser);
                     header('location:connexion.php');
 
                 }
@@ -74,28 +74,28 @@ if(!isset($_SESSION['login'])){
     {
         if(!empty($_POST['login']) and !empty($_POST['password']))
         {
-            $connexion=mysqli_connect('Localhost','root','','camping');
-            $requete= "SELECT Id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
-            $query=mysqli_query($connexion,$requete);
-            $resultat=mysqli_fetch_row($query);
+            $connexion = mysqli_connect('Localhost','root','','blog');
+            $requeteLogUser = "SELECT id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
+            $queryLogUser = mysqli_query($connexion, $requeteLogUser);
+            $resultatLogUser = mysqli_fetch_row($queryLogUser);
 
             $password=$_POST['password'];
 
 
-            if($resultat==0)
+            if($resultatLogUser == 0)
             {
                     echo '<div class="erreur">Login inexistant</div>'.'<br/>';
             }
 
             else
             {
-                if($_POST['login']==$resultat[1])
+                if($_POST['login'] == $resultatLogUser[1])
                 {
-                    if(password_verify($password, $resultat[2]))
+                    if(password_verify($password, $resultatLogUser[2]))
                     {
                         session_start();
-                        $_SESSION['id']=$resultat[0];
-                        $_SESSION['login']=$resultat[1];
+                        $_SESSION['id'] = $resultatLogUser[0];
+                        $_SESSION['login'] = $resultatLogUser[1];
                         header('location:index.php');
                     }
                     else
