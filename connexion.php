@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +20,8 @@
 				<div id="formConnexion">
 					<form action="" method="post"><br />
 
-						Login : <br /><input type="text" name="login"><br />
-						Password : <br /><input type="password" name="password"><br />
+						Login : <br /><input type="text" name="login" required><br />
+						Password : <br /><input type="password" name="password" required><br />
 
 
 					</div>
@@ -28,7 +33,7 @@
 
 					include('fonctions.php');
 					connexion();
-					
+
 					?>
 				</form>
 

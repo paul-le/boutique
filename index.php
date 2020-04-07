@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
                 <section id="testTop">
                     <img id="cartIcon" src="Images/carticonpng.png"> Mon panier
                 </section>
-            
+
                 <section id="partieCentre">
                     <img src="Images/banniere.jpg">
                 </section>

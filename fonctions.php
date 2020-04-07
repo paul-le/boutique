@@ -71,7 +71,7 @@ function inscription()
 function connexion()
 
 {
-
+   
     if(!isset($_SESSION['login']))
     {
 
@@ -119,7 +119,7 @@ function connexion()
     }
     else
     { 
-        header('location:index.php');
+        header('location:index.php');  
     }
 
 }
