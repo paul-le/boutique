@@ -107,12 +107,8 @@ body{
 #partieGauche{
     width: 20%;
     display:flex;
-    /* background-image: url('Images/bannieregauche.jpg');
-    background-size:cover;
-    background-repeat: no-repeat; */
-    /* background-attachment: fixed; */
     height: 1200px;
-    /* height: 100%; */
+
 }
 
 #imgGaucheToast{
@@ -123,10 +119,6 @@ body{
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    /* background-image: url('Images/banniere.jpg');
-    background-size:cover;
-    background-repeat: no-repeat; */
-    /* height: 300px; */
     border-left: 2px solid white;
     border-right: 2px solid white;
 }
@@ -134,12 +126,7 @@ body{
 #partieDroite{
     width: 20%;
     display: flex;
-    /* background-image: url('Images/bannieredroite.jpg');
-    background-size:cover;
-    background-repeat: no-repeat; */
-    /* background-attachment: fixed; */
     height: 1200px;
-    /* height: 100%; */
 }
 
 #mainContent{
@@ -287,10 +274,40 @@ footer{
 /*---------------Connexion---------------*/
 /*---------------Connexion---------------*/
 
-#connexionForm{
-    text-align: center;
+#mainConnexion{
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+#partieDroite{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#partieGauche{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#connexionForm{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 60%;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#formConnexionSection{
+    border: 2px solid #3bc8da;
+    padding: 5%;
+    border-radius: 25px 25px 25px 25px;
+}
 
 /*---------------Inscription---------------*/
 /*---------------Inscription---------------*/
@@ -302,3 +319,36 @@ footer{
 #inscriptionForm{
     text-align: center;
 }
+
+#partieDroite{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#partieGauche{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#inscriptionFormSection{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+#inscriptionForm{
+    border: 2px solid #3bc8da;
+    padding: 5%;
+    border-radius: 25px 25px 25px 25px;
+}
+
+#mainInscription{
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+}
+

@@ -13,22 +13,18 @@ session_start();
 	include('header.php');
 	?>
 	<main id="mainInscription">
-		<section id="inscriptionForm">
-			
-			<div id="fullFormInscription">
-				<div id="titreInscription">INSCRIPTION</div>
-				<form action="" method="post" ><br />
+			<section id="partieGauche">
+			</section>
+			<section id="inscriptionFormSection">
+				<form id="inscriptionForm" action="" method="post" ><br>
+					<h1>INSCRIPTION</h1>
+						Login :<br> <input type="text" name="login" required><br><br>
+						Mot de Passe :<br><input type="password" name="password" required><br><br>
+						Confirmation Mot de Passe : <br><input type="password" name="confirmpassword" required><br><br>
+						Mail :<br> <input type="email" name="mail" required><br><br>
+						Adresse :<br> <input type="text" name="adresse" required><br><br>
 
-					<div id="formInscription">
-						Login :<br /> <input type="text" name="login" required><br />
-						Mot de Passe :<br /><input type="password" name="password" required><br />
-						Confirmation Mot de Passe : <br /><input type="password" name="confirmpassword" required><br />
-						Mail :<br /> <input type="email" name="mail" required><br />
-						Adresse :<br /> <input type="text" name="adresse" required><br />
-					</div>
-					<div id="buttonInscription">
 						<input type="submit" name="valider">
-					</div>
 
 				</form>
 				<?php
@@ -36,7 +32,8 @@ session_start();
 				include('fonctions.php');
 				inscription();
 				?>
-			</div>
+			</section>
+		<section id="partieDroite">
 		</section>
 	</main>
 	<?php
