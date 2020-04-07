@@ -146,7 +146,7 @@ function newCategorie()
                 $requeteNewCat = "INSERT INTO categories (nom) VALUES ('".$_POST['categorie']."')";
                 $queryNewCat = mysqli_query($connexion, $requeteNewCat);
                 
-                header('location:index.php');   
+                header('location:admin.php');   
             }
             else
             {
@@ -161,4 +161,100 @@ function newCategorie()
 }
 
 
+function addSubCat()
+{
+    if ($_SESSION['rank'] == 'ADMIN') 
+    {
+        if (isset($_POST['addSubCat'])) 
+       {
+            $connexion = mysqli_connect('Localhost','root','','boutique');
+            $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
+            $querySubCat = mysqli_query($connexion, $requeteSubCat);
+            $resultatSubCat = mysqli_fetch_all($querySubCat);
+
+            
+            if (empty($resultatSubCat))
+            {
+                
+                $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
+                $queryCat = mysqli_query($connexion, $requeteCat);
+                $resultatCat = mysqli_fetch_assoc($queryCat);
+
+
+                $requeteNewSubCat = "INSERT INTO sous_categorie (id_categorie, nom) VALUES ('".$resultatCat['id']."', '".$_POST['subCat']."')";
+                $querySubNewCat = mysqli_query($connexion, $requeteNewSubCat);
+                echo $requeteNewSubCat;
+                //header('location:admin.php');   
+            }
+            else
+            {
+                echo "Cette sous categorie existe déja";
+            }
+        } 
+    }
+}
+
+function addArticle()
+{
+    if ($_SESSION['rank'] == 'ADMIN') 
+    {
+        if (isset($_POST['addArticle'])) 
+        {
+            $connexion = mysqli_connect('Localhost','root','','boutique');
+
+            $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
+            $queryCat = mysqli_query($connexion, $requeteCat);
+            $resultatCat = mysqli_fetch_assoc($queryCat);
+
+            $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
+            $querySubCat = mysqli_query($connexion, $requeteSubCat);
+            $resultatSubCat = mysqli_fetch_assoc($querySubCat);
+
+            $requeteArticle = "SELECT * FROM produits WHERE nom = '".$_POST['nameArticle']."'";
+            $queryArticle = mysqli_query($connexion, $requeteArticle);
+            $resultArticle = mysqli_fetch_all($queryArticle);
+
+            if (empty($resultArticle)) 
+            {
+
+                if (isset($_FILES['avatar']) AND !empty($_FILES['avatar'])) 
+                {
+                    $tailleMax = 2097152 ;
+                    $extensionsValides = $arrayName = array('jpg', 'jpeg', 'gif', 'png');
+                    if ($_FILES['avatar']['size'] <= $tailleMax) 
+                    {
+                        $extensionsUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+                        if (in_array($extensionsUpload, $extensionsValides)) 
+                        {
+                            $chemin = "imgArticle/".$_POST['nameArticle'].".".$extensionsUpload;
+                            echo $chemin;
+                            $deplacement = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                        }
+                        else
+                        {
+                            $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png. ";
+                        }
+
+                    }
+                    else
+                    {
+                        $msg = "Votre photo de profil ne doit pas dépasser 2Mo" ;
+                    }
+                }
+                
+
+                $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$_POST['nameArticle'].".".$extensionsUpload."')";
+                $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
+                echo $requeteNewArticle;
+                
+            }
+            else
+            {
+                echo "Ce produits existe déja";
+            }
+
+        }
+    }
+
+}
 ?>
