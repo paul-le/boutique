@@ -102,6 +102,10 @@ function connexion()
                             
                             $_SESSION['id'] = $resultatLogUser['id'];
                             $_SESSION['login'] = $resultatLogUser['login'];
+                            $_SESSION['password'] = $resultatLogUser['password'];
+                            $_SESSION['mail'] = $resultatLogUser['mail'];
+                            $_SESSION['adresse'] = $resultatLogUser['adresse'];
+                            $_SESSION['rand'] = $resultatLogUser['rank'];
                             
                             header('location:index.php');
                         }
@@ -124,6 +128,8 @@ function connexion()
 
 }
 
+
+function add
 
 
 ?>
