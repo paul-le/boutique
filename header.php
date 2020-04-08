@@ -18,10 +18,10 @@
                         </li>
                     <?php } elseif(isset($_SESSION['login']) && $_SESSION['rank'] == "ADMIN"){ ?>
                         <li>
-                            <a href="moncompte.php"><img id="iconAccount" src="Images/iconacc.png">Mon compte </a>
+                            <a href="profil.php"><img id="iconAccount" src="Images/iconacc.png">Mon compte </a>
                         </li>
                         <li>
-                            <a href="adminpanel.php"><img id="iconAccount" src="Images/iconacc.png">Administrateur </a>
+                            <a href="admin.php"><img id="iconAccount" src="Images/iconacc.png">Administrateur </a>
                         </li>
                         <li>
                             <a href="deconnect.php"><img src="Images/decoicon.png">Deconnexion</a>
