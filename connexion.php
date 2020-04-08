@@ -17,8 +17,8 @@ session_start();
 		<section id="partieGauche">
 		</section>
 		<section id="connexionForm">
-				<div id="formConnexionSection">
-					<h1>Connexion</h1>
+				<fieldset id="formConnexionSection">
+					<legend id="legendCon">Connexion</legend>
 					<form id="formConnexion" action="" method="post"><br />
 
 						Login : <br><br><input type="text" name="login" required><br><br>
@@ -37,7 +37,7 @@ session_start();
 				<br>
 				<a href="inscription.php">Vous n'avez pas de compte ?</a>
 
-			</div>
+			</fieldset>
 		</section>
 		<section id="partieDroite">
 		</section>

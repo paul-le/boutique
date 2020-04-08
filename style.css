@@ -280,6 +280,10 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#legendCon{
+    font-size: 35px;
+}
+
 #partieDroite{
     width: 20%;
     display: flex;
@@ -340,11 +344,27 @@ footer{
     background-color: #ffffff;
 }
 
-#inscriptionForm{
-    border: 2px solid #3bc8da;
-    padding: 5%;
-    border-radius: 25px 25px 25px 25px;
+#legIns{
+    font-size: 30px;
 }
+
+#fieldSetIns{
+    border: 2px solid #3bc8da;
+    border-radius: 25px 25px 25px 25px;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* #inscriptionForm{
+    border: 2px solid #3bc8da;
+    border-radius: 25px 25px 25px 25px;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
 
 #mainInscription{
     display: flex;
@@ -352,3 +372,69 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+
+#fullFlexProfil{
+    display: flex;
+    justify-content: center;
+}
+
+#partieDroite{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#partieGauche{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+}
+
+#mainProfilSection1{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+#mainProfilSection2{
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+#topBarProfil{
+    background-color: #141414;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formProfil{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px black solid;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#autreInfosProfil{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}

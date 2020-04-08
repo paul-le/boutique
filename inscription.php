@@ -16,8 +16,9 @@ session_start();
 			<section id="partieGauche">
 			</section>
 			<section id="inscriptionFormSection">
-				<form id="inscriptionForm" action="" method="post" ><br>
-					<h1>INSCRIPTION</h1>
+				<fieldset id="fieldSetIns">
+					<legend id="legIns">INSCRIPTION</legend>
+					<form id="inscriptionForm" action="" method="post" ><br>
 						Login :<br> <input type="text" name="login" required><br><br>
 						Mot de Passe :<br><input type="password" name="password" required><br><br>
 						Confirmation Mot de Passe : <br><input type="password" name="confirmpassword" required><br><br>
@@ -26,12 +27,13 @@ session_start();
 
 						<input type="submit" name="valider">
 
-				</form>
-				<?php
+					</form>
+					<?php
 
-				include('fonctions.php');
-				inscription();
-				?>
+					include('fonctions.php');
+					inscription();
+					?>
+				</fieldset>
 			</section>
 		<section id="partieDroite">
 		</section>
