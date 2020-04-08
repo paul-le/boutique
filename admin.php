@@ -79,7 +79,7 @@ include('fonctions.php');
 
 		<section class="testAdmin">
 			<div>ADD ARTICLE</div>
-			<form method="post" action="admin.php">
+			<form method="post" action="admin.php" enctype="multipart/form-data">
 				Nom : <br /> <input type="text" name="nameArticle"><br />
 				Description : <br /> <input type="text" name="descArticle"><br />
 				Prix : <br /> <input type="number" step="0.01" name="prixArticle"><br />
