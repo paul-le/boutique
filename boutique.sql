@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 08 avr. 2020 à 08:43
+-- Généré le :  jeu. 09 avr. 2020 à 10:48
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -49,15 +49,17 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
 INSERT INTO `categories` (`id`, `nom`) VALUES
-(1, 'ADD CAT TEST 1'),
-(2, 'ADD CAT TEST 2');
+(8, 'zerza'),
+(7, 'LOLFDSFS'),
+(6, 'PC'),
+(11, 'vcvcv');
 
 -- --------------------------------------------------------
 
@@ -109,16 +111,15 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `quantite` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
 INSERT INTO `produits` (`id`, `id_categorie`, `id_sous_categorie`, `nom`, `description`, `prix`, `quantite`, `img`) VALUES
-(1, 1, 1, 'TEST ARTICLE 1 ', 'ffezdsfzsd', '12', '1', 'NULL'),
-(2, 1, 1, 'fdzsf', 'dsfdsf', '13', '2', 'NULL'),
-(3, 1, 1, 'TEST3', 'fdscdsf', '12', '1', 'TEST3.');
+(11, 11, 8, 'TEST ARTICLE 1 ', 'ezrezr', '34', '100', 'TEST ARTICLE 1 .jpg'),
+(10, 6, 6, 'TEST ART 1r', 'rezrze', '23', '100', 'TEST ART 1r.jpg');
 
 -- --------------------------------------------------------
 
@@ -130,17 +131,18 @@ DROP TABLE IF EXISTS `sous_categorie`;
 CREATE TABLE IF NOT EXISTS `sous_categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_categorie` int(11) NOT NULL,
-  `nom` text NOT NULL,
+  `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `sous_categorie`
 --
 
 INSERT INTO `sous_categorie` (`id`, `id_categorie`, `nom`) VALUES
-(1, 1, 'SUBCAT TEST 1'),
-(2, 2, 'SUBCAT TEST 2');
+(6, 7, 'rezr'),
+(9, 6, 'rerzer'),
+(8, 7, 'erer');
 
 -- --------------------------------------------------------
 
