@@ -21,7 +21,7 @@ function inscription()
                 if($resultatUser == 0)
                 {
 
-                    if($_POST['password']==$_POST['confirmpassword'])
+                    if($_POST['password'] == $_POST['confirmpassword'] )
                     {
                         $password = $_POST['password'];
                         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -183,8 +183,8 @@ function addSubCat()
 
                 $requeteNewSubCat = "INSERT INTO sous_categorie (id_categorie, nom) VALUES ('".$resultatCat['id']."', '".$_POST['subCat']."')";
                 $querySubNewCat = mysqli_query($connexion, $requeteNewSubCat);
-                echo $requeteNewSubCat;
-                //header('location:admin.php');   
+               
+                header('location:admin.php');   
             }
             else
             {
@@ -203,26 +203,15 @@ function addArticle()
         if (isset($_POST['addArticle'])) 
         {
             
-            define('TARGET', '/files/');    // Repertoire cible
-            define('MAX_SIZE', 100000);    // Taille max en octets du fichier
-            define('WIDTH_MAX', 800);    // Largeur max de l'image en pixels
-            define('HEIGHT_MAX', 800);    // Hauteur max de l'image en pixels
-
-            // Tableaux de donnees
-            $tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
-            $infosImg = array();
-
-            // Variables
-            $extension = '';
-            $message = '';
-            $nomImage = '';
+            
 
             $connexion = mysqli_connect('Localhost','root','','boutique');
 
             $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
             $queryCat = mysqli_query($connexion, $requeteCat);
             $resultatCat = mysqli_fetch_assoc($queryCat);
-
+            var_dump($resultatCat);
+            
             $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
             $resultatSubCat = mysqli_fetch_assoc($querySubCat);
@@ -233,72 +222,45 @@ function addArticle()
 
             if (empty($resultArticle)) 
             {
-
-                
-
-                // On verifie si le champ est rempli
-                if( !empty($_FILES['avatar']['name']) )
+                if (isset($_FILES['avatar']) AND !empty($_FILES['avatar'])) 
                 {
-                    // Recuperation de l'extension du avatar
-                    $extension  = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
- 
-                    // On verifie l'extension du avatar
-                    if(in_array(strtolower($extension),$tabExt))
+                    $tailleMax = 2097152 ;
+                    $extensionsValides = $arrayName = array('jpg', 'jpeg', 'gif', 'png');
+                    if ($_FILES['avatar']['size'] <= $tailleMax) 
                     {
-                        // On recupere les dimensions du avatar
-                        $infosImg = getimagesize($_FILES['avatar']['tmp_name']);
- 
-                        // On verifie le type de l'image
-                        if($infosImg[2] >= 1 && $infosImg[2] <= 14)
+                        $extensionsUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+                        if (in_array($extensionsUpload, $extensionsValides)) 
                         {
-                            // On verifie les dimensions et taille de l'image
-                            if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['avatar']['tmp_name']) <= MAX_SIZE))
+                            $chemin = "imgArticle/".$_POST['nameArticle'].".".$extensionsUpload;
+                            
+                            $deplacement = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                            if ($deplacement) 
                             {
-                                // Parcours du tableau d'erreurs
-                                if(isset($_FILES['avatar']['error']) && UPLOAD_ERR_OK === $_FILES['avatar']['error'])
-                                {
-                                    // On renomme le avatar
-                                    $nomImage = $_POST['nameArticle'].'.'. $extension;
- 
-                                    // Si c'est OK, on teste l'upload
-                                    if(move_uploaded_file($_FILES['avatar']['tmp_name'], TARGET.$nomImage))
-                                    {
-                                        $message = 'Upload réussi !';
-                                    }   
-                                    else
-                                    {
-                                        // Sinon on affiche une erreur systeme
-                                        $message = 'Problème lors de l\'upload !';
-                                    }
-                                }
-                                else
-                                {
-                                    $message = 'Une erreur interne a empêché l\'uplaod de l\'image';
-                                }
+                                $nomImage = $_POST['nameArticle'].".".$extensionsUpload;
                             }
                             else
                             {
-                                // Sinon erreur sur les dimensions et taille de l'image
-                                $message = 'Erreur dans les dimensions de l\'image !';
-                            }   
+                                $msg = "Erreur durant l'importation de votre photo de profil" ;
+                            }
                         }
                         else
                         {
-                            // Sinon erreur sur le type de l'image
-                            $message = 'Le avatar à uploader n\'est pas une image !';
+                            $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png. ";
                         }
+
                     }
                     else
                     {
-                        // Sinon on affiche une erreur pour l'extension
-                        $message = 'L\'extension du avatar est incorrecte !';
+                        $msg = "Votre photo de profil ne doit pas dépasser 2Mo" ;
                     }
-                    $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$nomImage."' ";
-                    $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
-                    echo $requeteNewArticle;
                 }
                 
+
                 
+                    $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$nomImage."') ";
+                    $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
+                    echo $requeteNewArticle;
+
                 
             }
             else
@@ -310,4 +272,5 @@ function addArticle()
     }
 
 }
-?>
+
+
