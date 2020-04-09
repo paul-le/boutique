@@ -70,28 +70,37 @@
                                 if(isset($_POST['modifier']))
                                 {
                                     $loginUpdatePost = $_POST['login'];
-                                    $requeteCheckInfos = "SELECT login,mail FROM utilisateurs WHERE login = \"$loginUpdatePost\"";
+                                    $mailUpdatePost = $_POST['email'];
+                                    $requeteCheckInfos = "SELECT login FROM utilisateurs WHERE login = \"$loginUpdatePost\"";
                                     $queryCheckInfos = mysqli_query($connexion,$requeteCheckInfos);
                                     $resultatCheckInfos = mysqli_fetch_all($queryCheckInfos);
+                                    $requeteCheckInfos2 = "SELECT mail FROM utilisateurs WHERE mail =\"$mailUpdatePost\"";
+                                    $queryCheckInfos2 = mysqli_query($connexion,$requeteCheckInfos2);
+                                    $resultatCheckInfos2 = mysqli_fetch_all($queryCheckInfos2);
 
                                     if(!empty($_POST['login']) && !empty($resultatCheckInfos))
                                     {
-                                        echo "Ce login est déjà pris !";
+                                        echo "<br><br>Ce login est déjà pris !";
                                     }
-                                    
-                                    if(empty($resultatCheckInfos) && !empty($_POST['login']))
+                                    elseif(empty($resultatCheckInfos) && !empty($_POST['login']))
                                     {
                                         $requeteUpdateInfos = "UPDATE utilisateurs SET login = '".$_POST['login']."' WHERE id=\"$getId\"";
                                         $queryUpdateInfos = mysqli_query($connexion,$requeteUpdateInfos);
                                         header('Location:profil.php?id='.$getId.'');
                                     }
-                                    if(!empty($_POST['email']))
+
+                                    if(empty($_POST['email']) && !empty($resultatCheckInfos2))
                                     {
-                                        $requeteUpdateInfos2 = "UPDATE utilisateurs SET mail = '".$_POST['email']."' WHERE id=\"$getId\"";
-                                        $queryUpdateInfos2 = mysqli_query($connexion,$requeteUpdateInfos2);
-                                        header('Location:profil.php?id='.$getId.'');
+                                        echo "<br><br>Cet email est déjà utilisé !";
                                     }
 
+                                    elseif(empty($resultatCheckInfos2) && !empty($_POST['email']))
+                                    {
+                                            $requeteUpdateInfos2 = "UPDATE utilisateurs SET mail = '".$_POST['email']."' WHERE id=\"$getId\"";
+                                            $queryUpdateInfos2 = mysqli_query($connexion,$requeteUpdateInfos2);
+                                            header('Location:profil.php?id='.$getId.'');
+                                    }
+                                                  
                                     if(!empty($_POST['password']))
                                     {
                                         if($_POST['password'] == $_POST['passwordcon'])
@@ -106,13 +115,28 @@
                                             echo "Les mots de passes sont différents !";
                                         }
                                     }
+                                } 
+
+                                if(isset($_POST['modifierRang']))
+                                {
+                                    if($_POST['rankSwap'] != "Changer de rang")
+                                    {
+                                    $rangUpdatePost = $_POST['rankSwap'];
+                                    $requeteRangUpdate = "UPDATE utilisateurs SET rank = \"$rangUpdatePost\" WHERE utilisateurs.id = '".$_GET['id']."'";
+                                    $queryRangUpdate = mysqli_query($connexion,$requeteRangUpdate);
+                                    header('Location:profil.php?id='.$getId.'');
+                                    }
+                                    else
+                                    { 
+                                        echo "Veuillez choisir un rang !";
+                                    } 
                                 } ?>
 
                         </form>
                     </section>
                 
                     <section id="autreInfosProfil">
-                        Commentaires envoyés , articles achetés , "panier ?".
+                        Commentaires envoyés , articles achetés.
                     </section>
                 </section>
             </section>
@@ -121,26 +145,6 @@
             </section>
         </section>
     </main>
-    <?php
+    <?php 
     include('footer.php');
     ?>
-
-    <?php 
-
-        if(isset($_POST['modifierRang']))
-    {
-        $rangUpdatePost = $_POST['rankSwap'];
-        $requeteRangUpdate = "UPDATE utilisateurs SET rank = \"$rangUpdatePost\" WHERE utilisateurs.id = '".$_GET['id']."'";
-        $queryRangUpdate = mysqli_query($connexion,$requeteRangUpdate);
-        header('Location:profil.php?id='.$getId.'');
-    }
-
-
-
-
-
-
-
-
-
-        // ob_end_flush()
