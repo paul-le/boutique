@@ -21,7 +21,7 @@ function inscription()
                 if($resultatUser == 0)
                 {
 
-                    if($_POST['password']==$_POST['confirmpassword'])
+                    if($_POST['password'] == $_POST['confirmpassword'] )
                     {
                         $password = $_POST['password'];
                         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -183,8 +183,8 @@ function addSubCat()
 
                 $requeteNewSubCat = "INSERT INTO sous_categorie (id_categorie, nom) VALUES ('".$resultatCat['id']."', '".$_POST['subCat']."')";
                 $querySubNewCat = mysqli_query($connexion, $requeteNewSubCat);
-                echo $requeteNewSubCat;
-                //header('location:admin.php');   
+               
+                header('location:admin.php');   
             }
             else
             {
@@ -198,14 +198,20 @@ function addArticle()
 {
     if ($_SESSION['rank'] == 'ADMIN') 
     {
+
+
         if (isset($_POST['addArticle'])) 
         {
+            
+            
+
             $connexion = mysqli_connect('Localhost','root','','boutique');
 
             $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
             $queryCat = mysqli_query($connexion, $requeteCat);
             $resultatCat = mysqli_fetch_assoc($queryCat);
-
+            var_dump($resultatCat);
+            
             $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
             $resultatSubCat = mysqli_fetch_assoc($querySubCat);
@@ -216,7 +222,6 @@ function addArticle()
 
             if (empty($resultArticle)) 
             {
-
                 if (isset($_FILES['avatar']) AND !empty($_FILES['avatar'])) 
                 {
                     $tailleMax = 2097152 ;
@@ -227,8 +232,16 @@ function addArticle()
                         if (in_array($extensionsUpload, $extensionsValides)) 
                         {
                             $chemin = "imgArticle/".$_POST['nameArticle'].".".$extensionsUpload;
-                            echo $chemin;
+                            
                             $deplacement = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                            if ($deplacement) 
+                            {
+                                $nomImage = $_POST['nameArticle'].".".$extensionsUpload;
+                            }
+                            else
+                            {
+                                $msg = "Erreur durant l'importation de votre photo de profil" ;
+                            }
                         }
                         else
                         {
@@ -243,9 +256,11 @@ function addArticle()
                 }
                 
 
-                $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$_POST['nameArticle'].".".$extensionsUpload."')";
-                $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
-                echo $requeteNewArticle;
+                
+                    $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$nomImage."') ";
+                    $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
+                    echo $requeteNewArticle;
+
                 
             }
             else
@@ -257,4 +272,5 @@ function addArticle()
     }
 
 }
-?>
+
+

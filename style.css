@@ -104,12 +104,11 @@ body{
     background-size: cover;
 }
 
-#partieGauche{
+/* #partieGauche{
     width: 20%;
     display:flex;
     height: 1200px;
-
-}
+} */
 
 #imgGaucheToast{
     width: 100%;
@@ -123,11 +122,11 @@ body{
     border-right: 2px solid white;
 }
 
-#partieDroite{
+/* #partieDroite{
     width: 20%;
     display: flex;
     height: 1200px;
-}
+} */
 
 #mainContent{
     /* margin-top: 300px; */
@@ -138,6 +137,55 @@ body{
     /* margin-top: 265px; */
     justify-content: center;
     height: 100%;
+}
+
+#topBarMainMiddleIndex{
+    background-color: #141414;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dernierJeuIndex{
+    height: 20%;
+    background-color: red;
+    display: flex;
+    margin-bottom: 3px;
+}
+
+.imageDuJeuIndex{
+    width: 15%;
+    background-color: grey;
+}
+
+.imageDuJeuIndex2{
+    width: 100%;
+}
+
+.nomDuJeuIndex{
+    width: 55%;
+    background-color: seagreen;
+}
+
+.prixDuJeuIndex{
+    width: 15%;
+    background-color: skyblue;
+}
+
+.panierDuJeuIndex{
+    width: 15%;
+    background-color: rgb(224, 236, 109);
+}
+
+#topBarMainLeftIndex{
+    background-color: #141414;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#topBarMainRightIndex{
+    background-color: #141414;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #testTop{
@@ -198,19 +246,19 @@ body{
 
 #mainTopContentCategories{
     width: 24%;
-    background-color: green;
+    background-color: rgb(212, 212, 212);
     height: 550px;
 }
 
 #mainTopContentListe{
     width: 50%;
-    background-color: red;
+    background-color:rgb(212, 212, 212);
     height: 550px;
 }
 
 #mainTopContentLastComment{
     width: 24%;
-    background-color: yellow;
+    background-color: rgb(212, 212, 212);
     height: 550px;
 }
 
@@ -324,17 +372,17 @@ footer{
     text-align: center;
 }
 
-#partieDroite{
+/* #partieDroite{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
-#partieGauche{
+/* #partieGauche{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
 #inscriptionFormSection{
     width: 60%;
@@ -385,17 +433,17 @@ footer{
     justify-content: center;
 }
 
-#partieDroite{
+/* #partieDroite{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
-#partieGauche{
+/* #partieGauche{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
 #mainProfilSection1{
     width: 60%;
@@ -439,9 +487,95 @@ footer{
     justify-content: center;
 }
 
-/* #rangSwap{
+
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+
+
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+
+#partieCentreTopProduits{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#partieDroiteProduits{
+    width: 20%;
+    display: flex;
+    /* height: 681.1px; */
+}
+
+#partieGaucheProduits{
+    width: 20%;
+    display: flex;
+    /* height: 681.1px; */
+}
+
+#partieCentreProduits{
+    width: 100%;
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+}
+
+#partieCentreProduitsGauche{
+    width: 50%;
+    background-color: steelblue;
+    display: flex;
+    border-right: 1.5px solid black;
+}
+
+#partieCentreProduitsDroite{
+    width: 50%;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+}
+
+.nomDuProduit{
+    width: 100%;
+    background-color: turquoise;
+    /* height: 10%; */
+    height: 35px;
+}
+
+.descDuProduit{
+    width: 100%;
+    background-color: violet;
+    /* height: 75%; */
+    height: 450px;
+}
+
+.prixDuProduit{
+    width: 100%;
+    background-color: grey;
+    /* height: 15%; */
+    height: 115px;
+}
+
+#commentaireProduitSection{
+    height: 300px;
+    background-color: white;
+}
+
+#commentaireProduitTopBar{
+    background-color: #141414;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+#commentaireSurLeProduit{
+
+}

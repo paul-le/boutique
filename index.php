@@ -33,20 +33,42 @@
                         <section id="mainContentFlexSeparation">
                             <section id="mainTopContent">
                                 <section id="mainTopContentCategories">
-                                    DERNIERS COMMENTAIRES
+                                    <section id="topBarMainLeftIndex">
+                                        DERNIERS COMMENTAIRES
+                                    </section>
                                 </section>
                                 <section id="mainTopContentListe">
-                                    DERNIERS JEUX AJOUTÉS
+                                    <section id="topBarMainMiddleIndex">
+                                        DERNIERS JEUX AJOUTÉS
+                                    </section>
+                                    <!-- Jeu à généré -->
+                                    <section class="dernierJeuIndex">
+                                        <section class="imageDuJeuIndex">
+                                            <img witdh="10" class="imageDuJeuIndex2" src="Images/jeutoast2.png">
+                                        </section>
+                                        <section class="nomDuJeuIndex">
+                                            NOM DU JEU
+                                        </section>
+                                        <section class="prixDuJeuIndex">
+                                            PRIX DU JEU
+                                        </section>
+                                        <section class="panierDuJeuIndex">
+                                            PANIER
+                                        </section>
+                                    </section>
+                                    <!--             -->
                                 </section>
                                 <section id="mainTopContentLastComment">
-                                    CATÉGORIES
+                                    <section id="topBarMainRightIndex">
+                                        CATÉGORIES
+                                    </section>
                                 </section>
                         </section>
                         <section id="banniereSeparation">
 
                             </section>
                             <section id="meilleuresVentes">
-                                Meilleurs ventes
+                                Meilleures ventes
                             </section>
                         </section>
                     </section>
