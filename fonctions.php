@@ -168,10 +168,12 @@ function addSubCat()
         if (isset($_POST['addSubCat'])) 
        {
             $connexion = mysqli_connect('Localhost','root','','boutique');
-            $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
+            $requeteSubCat = "SELECT * FROM sous_categorie INNER JOIN categories ON sous_categorie.id_categorie = categories.id WHERE categories.nom = '".$_POST['categorie']."' AND sous_categorie.nom ='".$_POST['subCat']."' ";
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
             $resultatSubCat = mysqli_fetch_all($querySubCat);
 
+           
+            
             
             if (empty($resultatSubCat))
             {
@@ -210,8 +212,8 @@ function addArticle()
             $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
             $queryCat = mysqli_query($connexion, $requeteCat);
             $resultatCat = mysqli_fetch_assoc($queryCat);
-            var_dump($resultatCat);
             
+
             $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
             $resultatSubCat = mysqli_fetch_assoc($querySubCat);

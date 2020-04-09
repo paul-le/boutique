@@ -108,7 +108,9 @@ include('fonctions.php');
 						<?php
 
 						addSubCat();
+						
 						?>
+
 					</form>
 
 					<section>
@@ -234,51 +236,54 @@ include('fonctions.php');
 										</tr>
 										<?php
 
-										$requeteAllProduits = "SELECT * FROM produits";
-										$queryAllProduits = mysqli_query($connexion, $requeteAllProduits);
-										$resultAllProduits = mysqli_fetch_all($queryAllProduits);
 										
-										$nbProduits = count($resultAllProduits);
+										
+										
 
 										$requeteInfosArticle = "SELECT * FROM produits INNER JOIN categories ON produits.id_categorie = categories.id INNER JOIN sous_categorie ON produits.id_sous_categorie = sous_categorie.id";
 										$queryInfosArticle = mysqli_query($connexion, $requeteInfosArticle);
 										$resultInfosArticle = mysqli_fetch_all($queryInfosArticle);
 
-										var_dump($resultInfosArticle);
+										$nbProduits = count($resultInfosArticle);
 										
 
-
 										
-
-
-										$i = 0 ;
-
-										while ($i != $nbProduits) 
+										if (empty($resultInfosArticle)) 
+										{
+											echo "Aucun Article Disponible";
+										}
+										else
 										{
 
+											$i = 0 ;
+											while ($i != $nbProduits) 
+											{
 
-										?>
-											<tr>
-												<td><?php echo $resultInfosArticle[$i][0]; ?></td>
-												<td><?php echo $resultInfosArticle[$i][9]; ?></td>
-												<td><?php echo $resultInfosArticle[$i][12]; ?></td>
-												<td><?php echo $resultInfosArticle[$i][3]; ?></td>
-												<td><?php echo $resultInfosArticle[$i][4]; ?></td>
-												<td><?php echo $resultInfosArticle[$i][5]; ?>€</td>
-												<td><?php echo $resultInfosArticle[$i][6]; ?></td>
-												<td><img src="imgArticle/<?php echo $resultInfosArticle[$i][7] ?>" width ="100" ></td>
-												<td><a href="produits?id=<?php echo $resultAllProduits[$i][0]; ?>"><input type="submit" name="updateProduits" value="Modifier"></a></td>
-												<?php
-												$i++;
+
 												?>
-											</tr>
-											
-											<?php
-											
-											
-										}
-										?>
+												<tr>
+													<td><?php echo $resultInfosArticle[$i][0]; ?></td>
+													<td><?php echo $resultInfosArticle[$i][9]; ?></td>
+													<td><?php echo $resultInfosArticle[$i][12]; ?></td>
+													<td><?php echo $resultInfosArticle[$i][3]; ?></td>
+													<td><?php echo $resultInfosArticle[$i][4]; ?></td>
+													<td><?php echo $resultInfosArticle[$i][5]; ?>€</td>
+													<td><?php echo $resultInfosArticle[$i][6]; ?></td>
+													<td><img src="imgArticle/<?php echo $resultInfosArticle[$i][7] ?>" width ="100" ></td>
+													<td><a href="produits?id=<?php echo $resultInfosArticle[$i][0]; ?>"><input type="submit" name="updateProduits" value="Modifier"></a></td>
+													<?php
+													
+													?>
+												</tr>
 
+												<?php
+
+											$i++;
+											}
+
+										}
+
+										?>
 									</tbody>
 								</table>
 								
