@@ -273,7 +273,7 @@ include('fonctions.php');
 													<td><a href="produits?id=<?php echo $resultInfosArticle[$i][0]; ?>"><input type="submit" name="updateProduits" value="Modifier"></a></td>
 													<?php
 													
-													?>
+													?>	
 												</tr>
 
 												<?php

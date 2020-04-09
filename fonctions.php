@@ -212,7 +212,7 @@ function addArticle()
             $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
             $queryCat = mysqli_query($connexion, $requeteCat);
             $resultatCat = mysqli_fetch_assoc($queryCat);
-            
+             
 
             $requeteSubCat = "SELECT * FROM sous_categorie WHERE nom = '".$_POST['subCat']."'";
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
