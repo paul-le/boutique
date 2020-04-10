@@ -26,6 +26,15 @@
                         <li>
                             <a href="deconnect.php"><img src="Images/decoicon.png">Deconnexion</a>
                         </li>
+                        <li>
+                            <form method="post" action="">
+                                <input type="search" name="searchBar">
+                                <input type="submit" name="search" value="Rechercher">
+                            </form>
+                            <?php
+                            searchBar();
+                            ?>
+                        </li>
                     <?php } else { ?>
                         <li>
                         <a href="connexion.php"><img id="iconAccount" src="Images/iconacc.png">Mon compte </a>

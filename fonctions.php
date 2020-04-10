@@ -276,3 +276,28 @@ function addArticle()
 }
 
 
+function searchBar()
+{
+    if (isset($_POST["search"]) AND strlen($_POST["search"]) != 0) 
+    {
+        $_POST["searchBar"] = htmlspecialchars($_POST["searchBar"]);
+        $recherche = $_POST["searchBar"];
+
+        if (isset($recherche)) 
+        {
+            $recherche = strtolower($recherche);
+
+            $connexion = mysqli_connect('Localhost','root','','boutique');
+
+            $requeteSearch = "SELECT * FROM produits WHERE nom LIKE '%$recherche%' ";
+            $querySearch = mysqli_query($connexion, $requeteSearch);
+            $resultSearch = mysqli_fetch_all($querySearch);
+
+            
+            
+
+        }
+    }
+}
+
+?>
