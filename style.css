@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 body{
     margin:0;
     width: 100%;
@@ -142,14 +144,31 @@ body{
 #topBarMainMiddleIndex{
     background-color: #141414;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .dernierJeuIndex{
-    height: 20%;
-    background-color: red;
+    height: 18.7%;
+    /* background-color: red; */
     display: flex;
     margin-bottom: 3px;
+    margin-top: 3px;
+    background-color: rgb(172, 172, 172);
+}
+
+.dernierJeuIndex a{
+    text-decoration: none;
+    color: black;
+}
+
+.dernierJeuIndex a:active{
+    text-decoration: none;
+    color: black;
+}
+
+.dernierJeuIndex a:visited{
+    text-decoration: none;
+    color: black;
 }
 
 .imageDuJeuIndex{
@@ -159,33 +178,98 @@ body{
 
 .imageDuJeuIndex2{
     width: 100%;
+    height: 100%;
 }
 
 .nomDuJeuIndex{
     width: 55%;
-    background-color: seagreen;
+    /* background-color: seagreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 .prixDuJeuIndex{
     width: 15%;
-    background-color: skyblue;
+    background-color: rgb(180, 180, 180);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .panierDuJeuIndex{
     width: 15%;
-    background-color: rgb(224, 236, 109);
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panierDuJeuIndex img{
+    width: 50%;
+}
+
+#comSectionLeft{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
 }
 
 #topBarMainLeftIndex{
     background-color: #141414;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+#sectionComGeneration{
+    height: 19%;
+    background-color: rgb(209, 209, 209);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #topBarMainRightIndex{
     background-color: #141414;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#cateSectionFlex{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#cateTopSection{
+    height: 48%;
+    /* background-color: royalblue; */
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+    box-shadow:  0 2px 1px -1px gray;
+    font-family: 'Roboto', sans-serif;
+}
+
+#cateBottomSection{
+    height: 48%;
+    width: 90%;
+    margin-top: 4.5px;
+    /* background-color: seagreen; */
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #testTop{
@@ -254,12 +338,14 @@ body{
     width: 50%;
     background-color:rgb(212, 212, 212);
     height: 550px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
 }
 
 #mainTopContentLastComment{
     width: 24%;
     background-color: rgb(212, 212, 212);
     height: 550px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
 }
 
 #banniereSeparation{
@@ -545,6 +631,14 @@ footer{
     color:white;
 }
 
+#buttonAdmin2{
+    border:none;
+    background-color: #3bc8da;
+    padding:3px;
+    border-radius: 8px 8px 8px 8px;
+    color:white;
+}
+
 #topBarAjouterSubCate{
     background-color: #3bc8da;
     padding: 1%;
@@ -672,6 +766,8 @@ footer{
     border-bottom: 2px solid black;
     border-collapse : collapse;
     border-spacing : 0;
+    /* padding-right: 5px; */
+    text-align: center;
 }
 
 #descListeProduits{

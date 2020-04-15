@@ -1,9 +1,29 @@
 <?php
 
     session_start();
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
     include('fonctions.php');
     ob_start();
+
+    $connexion = mysqli_connect('Localhost','root','','boutique');
+
+    $requeteListeJeux = "SELECT * FROM produits ORDER BY id DESC LIMIT 5";
+    $queryListeJeux = mysqli_query($connexion,$requeteListeJeux);
+    $resultatListeJeux = mysqli_fetch_all($queryListeJeux);
+    // var_dump($resultatListeJeux);
+    $nbProduits = count($resultatListeJeux);
+
+    // $requeteCom = "SELECT * FROM commentaires ORDER BY id DESC LIMIT 5";
+    $requeteCom = "SELECT c.*,u.login FROM commentaires AS c INNER JOIN utilisateurs AS u ON c.id_utilisateur = u.id ORDER BY c.id DESC LIMIT 5";
+    $queryCom = mysqli_query($connexion,$requeteCom);
+    $resultatCom = mysqli_fetch_all($queryCom);
+    // var_dump($resultatCom);
+
+    $requeteListeCate="SELECT * FROM categories";
+    $queryListeCate =mysqli_query($connexion,$requeteListeCate);
+    $resultatListeCate = mysqli_fetch_all($queryListeCate);
+    var_dump($resultatListeCate);
+    $nbCate = count($resultatListeCate);
 
 ?>
 
@@ -35,8 +55,25 @@
                         <section id="mainContentFlexSeparation">
                             <section id="mainTopContent">
                                 <section id="mainTopContentCategories">
-                                    <section id="topBarMainLeftIndex">
-                                        DERNIERS COMMENTAIRES
+                                    <section id="comSectionLeft">
+                                        <section id="topBarMainLeftIndex">
+                                            DERNIERS COMMENTAIRES
+                                        </section>
+                                        <!-- Commentaires à généré -->
+                                        <?php
+                                            $i=0;
+                                            while($i <= 4)
+                                            {
+                                                $dateComTest = date(("d-m-Y à H:i:s") , strtotime($resultatCom[$i][5])); ?>
+
+                                        <section id="sectionComGeneration">
+                                            <section>
+                                                <?php echo "<b>Note</b> : ".$resultatCom[$i][4]."/5  <br><b>".$resultatCom[$i][6]." : </b> ".$resultatCom[$i][3]." <br> <b>".$dateComTest."</b>"; ?>
+                                            </section>
+                                        </section>
+
+                                            <?php $i++; } ?>
+                                        <!--                       -->
                                     </section>
                                 </section>
                                 <section id="mainTopContentListe">
@@ -44,26 +81,55 @@
                                         DERNIERS JEUX AJOUTÉS
                                     </section>
                                     <!-- Jeu à généré -->
+                                    <?php 
+                                    
+                                    $i = 0;
+
+                                    while($i != $nbProduits)
+                                    { 
+                                        $imageProduit = $resultatListeJeux[$i][7];
+                                        $idProduit = $resultatListeJeux[$i][0];
+
+                                        ?>
                                     <section class="dernierJeuIndex">
                                         <section class="imageDuJeuIndex">
-                                            <img witdh="10" class="imageDuJeuIndex2" src="Images/jeutoast2.png">
+                                            <a href="produits.php?id=<?php echo "".$idProduit.""; ?>"><img witdh="10" class="imageDuJeuIndex2" src="imgArticle/<?php echo $imageProduit; ?>">
                                         </section>
                                         <section class="nomDuJeuIndex">
-                                            NOM DU JEU
+                                            <?php echo $resultatListeJeux[$i][3]; ?></a>
                                         </section>
                                         <section class="prixDuJeuIndex">
-                                            PRIX DU JEU
+                                            <?php echo "".$resultatListeJeux[$i][5]." €"; ?>
                                         </section>
                                         <section class="panierDuJeuIndex">
-                                            PANIER
+                                            <img src="Images/cartindex.png">
                                         </section>
                                     </section>
+                                    <?php $i++; } ?>
                                     <!--             -->
                                 </section>
                                 <section id="mainTopContentLastComment">
                                     <section id="topBarMainRightIndex">
-                                        CATÉGORIES
+                                        CATEGORIES
                                     </section>
+                                    <!-- Catégories à généré -->
+                                    <section id="cateSectionFlex">
+                                        <section id="cateTopSection">
+                                            <ul>
+                                            <?php
+                                                $cateCounter = 0;
+                                                while($cateCounter != $nbCate)
+                                                { 
+                                                    $cateAffichage = $resultatListeCate[$cateCounter][1]; ?>
+                                                <li> <?php echo "".$cateAffichage.""; ?> </li>
+                                                <?php $cateCounter++; } ?>
+                                            </ul>
+                                        </section>
+                                        <section id="cateBottomSection">
+                                            Sous caté
+                                        </section>
+                                    </section>
+                                    <!--                     -->
                                 </section>
                         </section>
                         <section id="banniereSeparation">

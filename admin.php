@@ -115,14 +115,19 @@ ob_start();
 							$requeteAllSubCat = "SELECT * FROM sous_categorie";
 							$queryAllSubCat = mysqli_query($connexion, $requeteAllSubCat);
 							$resultAllSubCat = mysqli_fetch_all($queryAllSubCat);
-							
-							$nbSubCat = count($resultAllSubCat);
 
+							$requeteSubCat = "SELECT * FROM sous_categorie INNER JOIN categories ON sous_categorie.id_categorie = categories.id";
+							$querySubCat = mysqli_query($connexion, $requeteSubCat);
+							$resultatSubCat = mysqli_fetch_all($querySubCat);
+							// var_dump($resultatSubCat);
+
+							$nbSubCat = count($resultAllSubCat);
+							
 							$i = 0;
 							while($i != $nbSubCat) 
 							{ ?>
 								<form method="post" action="">
-									Sous-Categorie : <input type="text" name="upSubCat" placeholder="<?php echo $resultAllSubCat[$i][2]; ?>">
+									<?php echo $resultatSubCat[$i][4]; ?> > Sous-Categorie : <input type="text" name="upSubCat" placeholder="<?php echo $resultAllSubCat[$i][2]; ?>">
 									<input id="buttonAdmin" type="submit" name="updateSubCat<?php echo $resultAllSubCat[$i][0]; ?>" value="Modifier">
 									<input id="buttonAdmin" type="submit" name="deleteSubCat<?php echo $resultAllSubCat[$i][0]; ?>" value="Supprimer">
 								</form><br>
@@ -199,7 +204,7 @@ ob_start();
 								</select>
 								<br />
 								<br />
-								<input id="buttonAdmin" type="submit" name="addArticle" value="Ajouter">
+								<input id="buttonAdmin2" type="submit" name="addArticle" value="Ajouter">
 
 								<?php
 								addArticle();
@@ -213,6 +218,7 @@ ob_start();
 								Liste des produits :
 							</section>
 							<section id="listeProduitsTable">
+							<form method="POST" action="">
 								<table id="tableProduit">
 									<thead>
 										<tr>
@@ -228,14 +234,13 @@ ob_start();
 											<td>Description</td>
 											<td>Prix</td>
 											<td>Quantité</td>
-											<td>PHOTO</td>
+											<td>Image</td>
 											<td></td>
 										</tr>
 										<?php
 											$requeteInfosArticle = "SELECT * FROM produits INNER JOIN categories ON produits.id_categorie = categories.id INNER JOIN sous_categorie ON produits.id_sous_categorie = sous_categorie.id";
 											$queryInfosArticle = mysqli_query($connexion, $requeteInfosArticle);
 											$resultInfosArticle = mysqli_fetch_all($queryInfosArticle);
-
 											$nbProduits = count($resultInfosArticle);
 										
 
@@ -260,9 +265,25 @@ ob_start();
 													<td><?php echo $resultInfosArticle[$i][5]; ?>€</td>
 													<td><?php echo $resultInfosArticle[$i][6]; ?></td>
 													<td id="imgArticleListeProduit"><img src="imgArticle/<?php echo $resultInfosArticle[$i][7] ?>"></td>
-													<td><a href="produits?id=<?php echo $resultInfosArticle[$i][0]; ?>"><input id="buttonAdmin" type="submit" name="updateProduits" value="Modifier"></a></td>
+													<td><a href="produits?id=<?php echo $resultInfosArticle[$i][0]; ?>"><input id="buttonAdmin2" type="submit" name="updateProduits<?php echo $resultInfosArticle[$i][0] ; ?>" value="Modifier"></a>
+													<br><br>
+													<input id="buttonAdmin2" type="submit"  name="supprimerProduit<?php echo $resultInfosArticle[$i][0] ; ?>" value="Supprimer">
+													</td>
 													<?php
+														// $deleteArticle = $_POST["supprimerProduit'".$resultInfosArticle[$i][0]."'"];
+														$idProduitDelete = $resultInfosArticle[$i][0];
 													
+														if(isset($_POST["supprimerProduit$idProduitDelete"]))
+														{
+															$requeteDeleteProduit="DELETE FROM produits WHERE id=\"$idProduitDelete\"";
+															$queryDeleteProduit=mysqli_query($connexion,$requeteDeleteProduit);
+															header('location:admin.php');
+														}
+
+														if(isset($_POST["updateProduits$idProduitDelete"]))
+														{
+															header('location:produits.php?id='.$idProduitDelete.'');
+														}
 													?>	
 												</tr>
 
@@ -278,6 +299,7 @@ ob_start();
 								</table>
 								</section>
 							</section>
+							</form>
 						</section>
 									</section>
 						<br />

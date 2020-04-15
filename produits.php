@@ -63,15 +63,18 @@
                             $resultatListeCom = mysqli_fetch_all($queryListeCom);
                             // var_dump($resultatListeCom);
                             $i = 0;
-
-                            while($i <= 4)
+                            $nbCom = count($resultatListeCom);
+                            if($nbCom != 0)
+                            {
+                            while($i != 4)
                             { ?> <section id="commentaireSurLeProduit"> <?php
                                 $dateComTest = date(("d-m-Y H:i:s") , strtotime($resultatListeCom[$i][5]));
-                                echo "".$resultatListeCom[$i][4]."/5 <b>".$resultatListeCom[$i][6]." : </b> ".$resultatListeCom[$i][3]." le <b>".$dateComTest."</b><br><br>";
+                                echo "<b>Note</b> : ".$resultatListeCom[$i][4]."/5 | <b>".$resultatListeCom[$i][6]." : </b> ".$resultatListeCom[$i][3]." le <b>".$dateComTest."</b><br><br>";
                                 $i++; ?> 
                                 </section> 
                             <?php
                             }
+                        }
                                 
                         ?>
                         
