@@ -172,7 +172,7 @@ function addSubCat()
             $querySubCat = mysqli_query($connexion, $requeteSubCat);
             $resultatSubCat = mysqli_fetch_all($querySubCat);
 
-           
+            
             
             
             if (empty($resultatSubCat))
