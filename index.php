@@ -20,10 +20,17 @@
     // var_dump($resultatCom);
 
     $requeteListeCate="SELECT * FROM categories";
-    $queryListeCate =mysqli_query($connexion,$requeteListeCate);
+    $queryListeCate = mysqli_query($connexion,$requeteListeCate);
     $resultatListeCate = mysqli_fetch_all($queryListeCate);
-    var_dump($resultatListeCate);
+    // var_dump($resultatListeCate);
     $nbCate = count($resultatListeCate);
+
+    $requeteListeSousCate="SELECT * FROM sous_categorie";
+    $queryListeSousCate = mysqli_query($connexion,$requeteListeSousCate);
+    $resultatListeSousCate = mysqli_fetch_all($queryListeSousCate);
+    var_dump($resultatListeSousCate);
+    $nbSousCate = count($resultatListeSousCate);
+
 
 ?>
 
@@ -120,13 +127,23 @@
                                                 $cateCounter = 0;
                                                 while($cateCounter != $nbCate)
                                                 { 
-                                                    $cateAffichage = $resultatListeCate[$cateCounter][1]; ?>
-                                                <li> <?php echo "".$cateAffichage.""; ?> </li>
+                                                    $cateAffichage = $resultatListeCate[$cateCounter][1];
+                                                    $cateId = $resultatListeCate[$cateCounter][0] ?>
+                                                <li> <a href="allproduits.php?cateid=<?php echo $cateId; ?> "> <?php echo "".$cateAffichage.""; ?> </a> </li>
                                                 <?php $cateCounter++; } ?>
                                             </ul>
                                         </section>
                                         <section id="cateBottomSection">
-                                            Sous caté
+                                        <ul>
+                                            <?php
+                                                $sousCateCounter = 0;
+                                                while($sousCateCounter != $nbSousCate)
+                                                { 
+                                                    $sousCateAffichage = $resultatListeSousCate[$sousCateCounter][2];
+                                                    $sousCateId = $resultatListeSousCate[$sousCateCounter][0] ?>
+                                                <li> <a href="allproduits.php?cateid=<?php echo $cateId; ?>&subcateid=<?php echo $sousCateId; ?>"> <?php echo "".$sousCateAffichage.""; ?> </a> </li>
+                                                <?php $sousCateCounter++; } ?>
+                                            </ul>
                                         </section>
                                     </section>
                                     <!--                     -->
