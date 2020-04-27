@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+include('fonctions.php');
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +59,7 @@ session_start();
     </main>
     <?php
     include('footer.php');
-    var_dump($_SESSION['login']);
+    
     ?>
 </body>
 </html>
