@@ -40,9 +40,9 @@ $idUser = $_SESSION['id'];
 					$queryInfosArticle = mysqli_query($connexion, $requeteInfosArticle);
 					$resultInfosArticle = mysqli_fetch_all($queryInfosArticle);
 
+	
 				
 
-			
 
 					$nbProduits = count($resultInfosArticle);
 					
@@ -68,6 +68,7 @@ $idUser = $_SESSION['id'];
 								<td><?php echo $resultInfosArticle[$i][3]; ?></td>
 								<td><?php echo $resultInfosArticle[$i][4]; ?></td>
 								<td><?php echo $resultInfosArticle[$i][5]; ?>€</td>
+								<td><?php echo $resultInfosArticle[$i][6]; ?></td>
 								<td>										
 									<select  name="quantiteProduit<?php echo $resultInfosArticle[$i][0]; ?>">
 										<option value="1">1</option>
@@ -118,7 +119,7 @@ $idUser = $_SESSION['id'];
 										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$idProduit'";
 										$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
-										header('Location:panier.php?idUser='.$idUser.'');
+										header('Location:panier.php');
 										
 									}
 									else
@@ -140,7 +141,7 @@ $idUser = $_SESSION['id'];
 											$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$idProduit'";
 											$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
-											header('Location:panier.php?idUser='.$idUser.'');
+											header('Location:panier.php');
 
 										}
 										else

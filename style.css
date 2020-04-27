@@ -380,3 +380,39 @@ footer{
     text-align: center;
     
 }
+
+
+
+
+
+/*---------------Achat---------------*/
+/*---------------Achat---------------*/
+/*---------------Achat---------------*/
+/*---------------Achat---------------*/
+/*---------------Achat---------------*/
+/*---------------Achat---------------*/
+
+
+#paiement{
+    background-color: rgb(228, 228, 228);
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 2%;  
+}
+
+#paiement div{
+    width: 60%;
+    margin: 0 auto ;
+    border:2px solid black;
+    
+}
+
+#paiement p{
+    width: 20%;
+    margin-top:-10px;
+    margin-left:5px;
+    background-color: rgb(228, 228, 228);
+}
+
+

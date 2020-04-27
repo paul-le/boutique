@@ -10,7 +10,7 @@ $queryPanier = mysqli_query($connexion, $requetePanier);
 $resultPanier = mysqli_fetch_all($queryPanier);
 
 
-var_dump($resultPanier);
+
 
 ?>
 
@@ -18,12 +18,16 @@ var_dump($resultPanier);
 <html>
 <head>
 	<title>Panier</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<?php
+    include('header.php');
+    
+    ?>
 	<main>
-		<?php
-		if (isset($_GET['idUser'])) 
-		{?>
+		
+		
 			<form method="post" action="">
 				<table>
 					<thead>
@@ -42,6 +46,9 @@ var_dump($resultPanier);
 							
 
 						</tr>
+						<tr>
+							<td colspan="6"><a href="achat.php" target=" "><input type="submit" name="paiement" value="Paiement"></a></td>
+						</tr>
 						<?php
 						
 						$nbProduit = count($resultPanier);
@@ -54,9 +61,12 @@ var_dump($resultPanier);
 						else
 						{
 							$i = 0 ;
+							$prixTotal = 0;
 							while ($i != $nbProduit) 
 							{
+								
 								$idProduit = $resultPanier[$i][0];
+								$idArticle = $resultPanier[$i][1];
 								?>
 								<tr>
 									<td><?php echo $resultPanier[$i][8]; ?></td>
@@ -96,13 +106,14 @@ var_dump($resultPanier);
 
 
 										$newFullQuantite = $resultPanier[$i][11] - $_POST["addQuantite$idProduit"];
-										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id_article = '$idProduit'";
+										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$idArticle'";
 										$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
-										header('Location:panier.php?idUser='.$_GET["idUser"].'');
+										
+										header('Location:panier.php');
 
 									}
-
+									
 									if (isset($_POST["deleteProduit$idProduit"])) 
 									{
 										$newFullQuantite = $resultPanier[$i][11] + $resultPanier[$i][3];
@@ -113,12 +124,40 @@ var_dump($resultPanier);
 										$requeteDelete = "DELETE FROM panier WHERE id = '$idProduit'";
 										$queryDelete = mysqli_query($connexion, $requeteDelete);
 
-										echo $requeteUpdateFullQuantite.'<br />';
-										echo $requeteDelete;
-										//header('Location:panier.php?idUser='.$_GET["idUser"].'');
+										
+										header('Location:panier.php');
 									}
+
+
+
+									
+									$prixTotal += $resultPanier[$i][4];
+
+									$quantiteProduits = $resultPanier[$i][3];
+									$prixArticle = $resultPanier[$i][4];
+									if (isset($_POST["paiement"])) 
+									{
+
+										$addAchat = "INSERT INTO achats (id_utilisateur, id_article, quantite, prix) VALUES ('".$_SESSION['id']."', '".$idArticle."', '".$quantiteProduits."', '".$prixArticle."')"	;
+										$queryAddAchat = mysqli_query($connexion, $addAchat);
+
+										$deletePanier = "DELETE FROM panier WHERE id_article = '".$idArticle."' ";
+										$queryDeletePanier = mysqli_query($connexion, $deletePanier); 
+
+
+										header('Location:achat.php');
+									}
+									
+									
 								$i++;
-							}	
+							}
+							?>
+							<tr>
+								<td colspan="6">Montant Total : <?php echo $prixTotal ; ?> €</td>
+							</tr>
+							
+							<?php
+								
 						}
 
 		
@@ -126,13 +165,7 @@ var_dump($resultPanier);
 					</tbody>
 				</table>
 			</form>
-		<?php
-		}
-		else
-		{
-			echo "FDF3";
-		}
-		?>
+		
 	</main>
 
 </body>
