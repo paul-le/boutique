@@ -169,12 +169,12 @@ ob_start();
 									Description : <br /> <input type="text" name="descArticle"><br />
 									Prix : <br /> <input type="number" step="0.01" name="prixArticle"><br />
 									Quantite : <br /> <input type="number" name="amountArticle"> <br /> <br />
-									Avatar : <br /> <input type="file" name="avatar"><br /> <br />
+									Image : <br /> <input type="file" name="avatar"><br /> <br />
 									<select type="post" name="categorie">
 										<option>Categories</option>
 							<?php
 							for ($i=0; $i < $nbCat ; $i++) 
-								{?> 
+								{ ?> 
 									<option><?php echo $resultAllCat[$i][1]; ?></option>
 									<?php
 								}

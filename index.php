@@ -28,7 +28,7 @@
     $requeteListeSousCate="SELECT * FROM sous_categorie";
     $queryListeSousCate = mysqli_query($connexion,$requeteListeSousCate);
     $resultatListeSousCate = mysqli_fetch_all($queryListeSousCate);
-    var_dump($resultatListeSousCate);
+    // var_dump($resultatListeSousCate);
     $nbSousCate = count($resultatListeSousCate);
 
 
@@ -108,9 +108,9 @@
                                         <section class="prixDuJeuIndex">
                                             <?php echo "".$resultatListeJeux[$i][5]." €"; ?>
                                         </section>
-                                        <section class="panierDuJeuIndex">
+                                        <!-- <section class="panierDuJeuIndex">
                                             <img src="Images/cartindex.png">
-                                        </section>
+                                        </section> -->
                                     </section>
                                     <?php $i++; } ?>
                                     <!--             -->
