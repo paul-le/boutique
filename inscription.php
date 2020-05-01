@@ -13,30 +13,29 @@ session_start();
 	include('header.php');
 	?>
 	<main id="mainInscription">
-		<section id="inscriptionForm">
-			
-			<div id="fullFormInscription">
-				<div id="titreInscription">INSCRIPTION</div>
-				<form action="" method="post" ><br />
+			<section id="partieGauche">
+			</section>
+			<section id="inscriptionFormSection">
+				<fieldset id="fieldSetIns">
+					<legend id="legIns">INSCRIPTION</legend>
+					<form id="inscriptionForm" action="" method="post" ><br>
+						Login :<br> <input type="text" name="login" required><br><br>
+						Mot de Passe :<br><input type="password" name="password" required><br><br>
+						Confirmation Mot de Passe : <br><input type="password" name="confirmpassword" required><br><br>
+						Mail :<br> <input type="email" name="mail" required><br><br>
+						Adresse :<br> <input type="text" name="adresse" required><br><br>
 
-					<div id="formInscription">
-						Login :<br /> <input type="text" name="login" required><br />
-						Mot de Passe :<br /><input type="password" name="password" required><br />
-						Confirmation Mot de Passe : <br /><input type="password" name="confirmpassword" required><br />
-						Mail :<br /> <input type="email" name="mail" required><br />
-						Adresse :<br /> <input type="text" name="adresse" required><br />
-					</div>
-					<div id="buttonInscription">
 						<input type="submit" name="valider">
-					</div>
 
-				</form>
-				<?php
+					</form>
+					<?php
 
-				include('fonctions.php');
-				inscription();
-				?>
-			</div>
+					include('fonctions.php');
+					inscription();
+					?>
+				</fieldset>
+			</section>
+		<section id="partieDroite">
 		</section>
 	</main>
 	<?php

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('fonctions.php');
 ?>
 
 
@@ -14,32 +15,33 @@ session_start();
 	include('header.php');
 	?>
 	<main id="mainConnexion">
+		<section id="partieGauche">
+		</section>
 		<section id="connexionForm">
-			<div id="fullFormConnexion">
-				<div id="titreConnexion">CONNEXION</div><br />
-				<div id="formConnexion">
-					<form action="" method="post"><br />
+				<fieldset id="formConnexionSection">
+					<legend id="legendCon">Connexion</legend>
+					<form id="formConnexion" action="" method="post"><br />
 
-						Login : <br /><input type="text" name="login" required><br />
-						Password : <br /><input type="password" name="password" required><br />
+						Login : <br><br><input type="text" name="login" required><br><br>
+						Password : <br><br><input type="password" name="password" required><br><br>
 
-
-					</div>
-					<div id="buttonConnexion">
 						<input  type="submit" name="valider">
-					</div>
+
 
 					<?php
 
-					include('fonctions.php');
+					
 					connexion();
 
 					?>
 				</form>
+				<br>
+				<a href="inscription.php">Vous n'avez pas de compte ?</a>
 
-			</div>
+			</fieldset>
 		</section>
-
+		<section id="partieDroite">
+		</section>
 	</main>
 	<?php
 	include('footer.php');

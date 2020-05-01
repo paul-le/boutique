@@ -90,33 +90,33 @@ $idUser = $_SESSION['id'];
 								
 								
 
-								$requeteProduits = "SELECT * FROM produits WHERE id = '$idProduit'";
+								$requeteProduits = "SELECT * FROM produits WHERE id = '$getIdProduit'";
 								$queryProduits = mysqli_query($connexion, $requeteProduits);
 								$resultProduits = mysqli_fetch_all($queryProduits);
 
 								
-								$requeteArticle = "SELECT * FROM panier WHERE id_article = '".$idProduit."' ";
+								$requeteArticle = "SELECT * FROM panier WHERE id_article = '".$getIdProduit."' ";
 								$queryArticle = mysqli_query($connexion, $requeteArticle);
 								$resultArticle = mysqli_fetch_all($queryArticle);
 
 
 								
 
-								if (isset($_POST["addPanier$idProduit"])) 
+								if (isset($_POST["addPanier"])) 
 								{
 									
 
-									$prixProduit = $resultInfosArticle[$i][5] * $_POST["quantiteProduit$idProduit"];
+									$prixProduit = $resultatDonneesProduits[5] * $_POST["quantiteProduit"];
 
 									if (empty($resultArticle)) 
 									{
 										
 										
-										$requeteAddArticle = "INSERT INTO panier (id_article, id_utilisateur, quantite, prix) VALUES ('".$idProduit."', '".$_SESSION['id']."', '".$_POST["quantiteProduit$idProduit"]."', '".$prixProduit."')";
+										$requeteAddArticle = "INSERT INTO panier (id_article, id_utilisateur, quantite, prix) VALUES ('".$getIdProduit."', '".$_SESSION['id']."', '".$_POST["quantiteProduit"]."', '".$prixProduit."')";
 										$queryAddArticle = mysqli_query($connexion, $requeteAddArticle);
 
-										$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit$idProduit"];
-										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$idProduit'";
+										$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
+										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
 										$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
 										header('Location:panier.php');
@@ -127,18 +127,18 @@ $idUser = $_SESSION['id'];
 										if ($resultProduits[0][6] > 0) 
 										{
 											
-											$newQuantiteProduit = $resultArticle[0][3] + $_POST["quantiteProduit$idProduit"];
-											$requeteUpdateQuantite = "UPDATE panier set quantite = '".$newQuantiteProduit."' WHERE id_article = '$idProduit' ";
+											$newQuantiteProduit = $resultArticle[0][3] + $_POST["quantiteProduit"];
+											$requeteUpdateQuantite = "UPDATE panier set quantite = '".$newQuantiteProduit."' WHERE id_article = '$getIdProduit' ";
 											$queryUpdateQuantite = mysqli_query($connexion, $requeteUpdateQuantite);
 
 											$newPrixProduit = $prixProduit + $resultArticle[0][4];
 
-											$newPrix = "UPDATE panier set prix = '".$newPrixProduit."' WHERE id_article = '$idProduit'";
+											$newPrix = "UPDATE panier set prix = '".$newPrixProduit."' WHERE id_article = '$getIdProduit'";
 											$queryNewprix = mysqli_query($connexion, $newPrix);
 
 
-											$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit$idProduit"];
-											$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$idProduit'";
+											$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
+											$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
 											$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
 											header('Location:panier.php');

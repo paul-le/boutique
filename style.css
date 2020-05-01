@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 body{
     margin:0;
     width: 100%;
@@ -11,6 +13,38 @@ body{
     background-color: #141414;
     height: 100px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#formHeaderToast{
+    margin-left: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+#formHeaderInput{
+    background-color: #141414;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    width: 300px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#formHeaderSubmit{
+    background-image: url('Images/recherchericon.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 15px;
+    padding-bottom: 7px;
+    background-color: #141414;
+    display: flex;
 }
 
 #headerH1{
@@ -20,6 +54,8 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: #3bc8da;
 }
+
+
 
 #sectionBottomHeader{
     background-color: #363636;
@@ -104,12 +140,11 @@ body{
     background-size: cover;
 }
 
-#partieGauche{
+/* #partieGauche{
     width: 20%;
     display:flex;
     height: 1200px;
-
-}
+} */
 
 #imgGaucheToast{
     width: 100%;
@@ -123,11 +158,11 @@ body{
     border-right: 2px solid white;
 }
 
-#partieDroite{
+/* #partieDroite{
     width: 20%;
     display: flex;
     height: 1200px;
-}
+} */
 
 #mainContent{
     /* margin-top: 300px; */
@@ -138,6 +173,138 @@ body{
     /* margin-top: 265px; */
     justify-content: center;
     height: 100%;
+}
+
+#topBarMainMiddleIndex{
+    background-color: #141414;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dernierJeuIndex{
+    height: 18.7%;
+    /* background-color: red; */
+    display: flex;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    background-color: rgb(172, 172, 172);
+}
+
+.dernierJeuIndex a{
+    text-decoration: none;
+    color: rgb(17, 17, 17);
+}
+
+.dernierJeuIndex a:active{
+    text-decoration: none;
+    color: rgb(17, 17, 17);
+}
+
+.dernierJeuIndex a:visited{
+    text-decoration: none;
+    color: rgb(17, 17, 17);
+}
+
+.imageDuJeuIndex{
+    width: 15%;
+    background-color: grey;
+}
+
+.imageDuJeuIndex2{
+    width: 100%;
+    height: 100%;
+}
+
+.nomDuJeuIndex{
+    width: 55%;
+    /* background-color: seagreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.prixDuJeuIndex{
+    width: 30%;
+    background-color: rgb(180, 180, 180);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.panierDuJeuIndex{
+    width: 15%;
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panierDuJeuIndex img{
+    width: 50%;
+}
+
+#comSectionLeft{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
+}
+
+#topBarMainLeftIndex{
+    background-color: #141414;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+#sectionComGeneration{
+    height: 19%;
+    background-color: rgb(209, 209, 209);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color:rgb(17, 17, 17);
+}
+
+#topBarMainRightIndex{
+    background-color: #141414;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#cateSectionFlex{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#cateTopSection{
+    height: 48%;
+    /* background-color: royalblue; */
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+    box-shadow:  0 2px 1px -1px gray;
+    font-family: 'Roboto', sans-serif;
+}
+
+#cateBottomSection{
+    height: 48%;
+    width: 90%;
+    margin-top: 4.5px;
+    /* background-color: seagreen; */
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 #testTop{
@@ -159,19 +326,19 @@ body{
 #testTop a{
     width: 10%;
     text-decoration: none;
-    color:black;
+    color:rgb(48, 48, 48);
 }
 
 #testTop a:active{
     width: 10%;
     text-decoration: none;
-    color:black;
+    color:rgb(48, 48, 48);
 }
 
 #testTop a:visited{
     width: 10%;
     text-decoration: none;
-    color:black;
+    color:rgb(48, 48, 48);
 }
 
 #cartIcon{
@@ -198,20 +365,37 @@ body{
 
 #mainTopContentCategories{
     width: 24%;
-    background-color: green;
+    background-color: rgb(212, 212, 212);
     height: 550px;
 }
 
 #mainTopContentListe{
     width: 50%;
-    background-color: red;
+    background-color:rgb(212, 212, 212);
     height: 550px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
 }
 
 #mainTopContentLastComment{
     width: 24%;
-    background-color: yellow;
+    background-color: rgb(212, 212, 212);
     height: 550px;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(29, 29, 29, 0.527);
+}
+
+#mainTopContentLastComment a{
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+}
+
+#mainTopContentLast a:active{
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+}
+
+#mainTopContentLastComment a:visited{
+    text-decoration: none;
+    color: rgb(48, 48, 48);
 }
 
 #banniereSeparation{
@@ -236,6 +420,8 @@ footer{
     display: flex;
     flex-direction: column;
     padding:0;
+    position: relative;
+    bottom: 0;
 }
 
 #footerFirstSection{
@@ -280,6 +466,10 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#legendCon{
+    font-size: 35px;
+}
+
 #partieDroite{
     width: 20%;
     display: flex;
@@ -320,17 +510,17 @@ footer{
     text-align: center;
 }
 
-#partieDroite{
+/* #partieDroite{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
-#partieGauche{
+/* #partieGauche{
     width: 20%;
     display: flex;
     height: 681.1px;
-}
+} */
 
 #inscriptionFormSection{
     width: 60%;
@@ -340,11 +530,27 @@ footer{
     background-color: #ffffff;
 }
 
-#inscriptionForm{
-    border: 2px solid #3bc8da;
-    padding: 5%;
-    border-radius: 25px 25px 25px 25px;
+#legIns{
+    font-size: 30px;
 }
+
+#fieldSetIns{
+    border: 2px solid #3bc8da;
+    border-radius: 25px 25px 25px 25px;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* #inscriptionForm{
+    border: 2px solid #3bc8da;
+    border-radius: 25px 25px 25px 25px;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
 
 #mainInscription{
     display: flex;
@@ -353,66 +559,467 @@ footer{
 }
 
 
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+/*---------------Profil---------------*/
+
+#fullFlexProfil{
+    display: flex;
+    justify-content: center;
+}
+
+/* #partieDroite{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+} */
+
+/* #partieGauche{
+    width: 20%;
+    display: flex;
+    height: 681.1px;
+} */
+
+#mainProfilSection1{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+#mainProfilSection2{
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+#topBarProfil{
+    background-color: #141414;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formProfil{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px black solid;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#autreInfosProfil{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
 
 
-
-
-
-
-
-
-
-
-
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
+/*---------------Admin---------------*/
 
 #adminPanel{
-    text-align: center;
-    background-color: white ;
+    width: 60%;
+    margin-left: 20%;
+    background-color: white;
+}
+
+#flexTopAdminPanel{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2%;
+}
+
+#flexTopAdminPanel2{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.testAdmin1{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 2px solid grey;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    margin-top: auto;
+    padding: 2%;
+    height: 304px;
+    overflow-y: scroll;
+    
+}
+
+#topBarAjouterCate{
+    background-color: #3bc8da;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+#buttonAdmin{
+    border:none;
+    background-color: #3bc8da;
+    padding:0.8%;
+    border-radius: 8px 8px 8px 8px;
+    color:white;
+}
+
+#buttonAdmin2{
+    border:none;
+    background-color: #3bc8da;
+    padding:3px;
+    border-radius: 8px 8px 8px 8px;
+    color:white;
+}
+
+#topBarAjouterSubCate{
+    background-color: #3bc8da;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    /* width: 112.8%; */
+}
+
+.testAdmin2{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 2px solid grey;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    padding: 2%;
+    margin-top: auto;
+    height: 304px;
+    overflow-y: scroll;
+    /* width: 110%; */
+}
+
+#flexTopAdminPanel4{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2%;
+}
+
+.testAdmin3{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 2px solid grey;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    justify-content: center;
+    padding: 2%;
+    width: 75%
+}
+
+.testToast{
+    padding-top: 5%;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-bottom: 2px solid grey;
+    display: flex;
+    justify-content: center;
+}
+
+#testToast2{
+    padding-top: 5%;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-bottom: 2px solid grey;
+    display: flex;
+    justify-content: center;
+}
+
+#flexAjouterArticle{
+    display: flex;
+    flex-direction: column;
+    width: 38.7%;
+}
+
+#topBarAjouterArticle{
+    background-color: #3bc8da;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    width: 78%;
+}
+
+#flexTopArticleTest{
+    display: flex;
+}
+
+#topBarListeProduits{
+    background-color: #3bc8da;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+/* #tHeadListeProduit{
+    background-color: #3bc8da;
+    padding: 1%;
+    border-radius: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+} */
+
+#allProduits{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#listeProduitsTable{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0px 0px 10px 10px;
+    border-bottom: 2px solid grey;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    padding: 2%;
+    height: 308px;
+    overflow-y: scroll;
 }
 
 #tableProduit{
-    border-style: solid;
+    border-collapse : collapse;
 }
 
-#tableProduit tr, td{
-    border-style: solid;
-    width: 10%;
+#tableProduit td{
+    border-bottom: 2px solid black;
+    border-collapse : collapse;
+    border-spacing : 0;
+    /* padding-right: 5px; */
     text-align: center;
-    
 }
 
+#descListeProduits{
+    height: 100px;
+    width: 111px;
+    overflow: scroll;
+}
 
+#imgArticleListeProduit img{
+    width: 80px;
+    height: 100px;
+}
 
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
+/*---------------Produits---------------*/
 
-
-/*---------------Achat---------------*/
-/*---------------Achat---------------*/
-/*---------------Achat---------------*/
-/*---------------Achat---------------*/
-/*---------------Achat---------------*/
-/*---------------Achat---------------*/
-
-
-#paiement{
-    background-color: rgb(228, 228, 228);
+#partieCentreTopProduits{
     width: 60%;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 2%;  
+    display: flex;
+    flex-direction: column;
 }
 
-#paiement div{
-    width: 60%;
-    margin: 0 auto ;
-    border:2px solid black;
-    
-}
-
-#paiement p{
+#partieDroiteProduits{
     width: 20%;
-    margin-top:-10px;
-    margin-left:5px;
-    background-color: rgb(228, 228, 228);
+    display: flex;
+    /* height: 681.1px; */
+}
+
+#partieGaucheProduits{
+    width: 20%;
+    display: flex;
+    /* height: 681.1px; */
+}
+
+#partieCentreProduits{
+    width: 100%;
+    background-color: white;
+    display: flex;
+}
+
+#partieCentreProduitsGauche{
+    width: 50%;
+    background-color: steelblue;
+    display: flex;
+    border-right: 1.5px solid black;
+}
+
+#partieCentreProduitsGauche img{
+    width: 100%;
+}
+
+#partieCentreProduitsDroite{
+    width: 50%;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+}
+
+.nomDuProduit{
+    width: 100%;
+    background-color: turquoise;
+    /* height: 10%; */
+    height: 35px;
+}
+
+.descDuProduit{
+    width: 100%;
+    background-color: violet;
+    /* height: 75%; */
+    height: 450px;
+}
+
+.prixDuProduit{
+    width: 100%;
+    background-color: grey;
+    /* height: 15%; */
+    height: 115px;
+}
+
+#commentaireProduitSection{
+    height: auto;
+    background-color: white;
+}
+
+#commentaireProduitTopBar{
+    background-color: #141414;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+#commentaireSurLeProduit{
+    height: auto;
+    padding-top: 13px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-bottom: 2px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#commentaireFormTopBar{
+    background-color: #141414;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+#commentaireFormProduitSection{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5%;
+}
+
+#formToast{
+    display: flex;
+    justify-content: space-between;
+}
+
+#textAreaCommentaire{
+    resize: none;
 }
 
 
+/*---------------Liste des produits---------------*/
+/*---------------Liste des produits---------------*/
+/*---------------Liste des produits---------------*/
+/*---------------Liste des produits---------------*/
+/*---------------Liste des produits---------------*/
+/*---------------Liste des produits---------------*/
+
+#listeProduitsMain{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(228, 228, 228);
+    width: 60%;
+    margin-left: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 681px;
+}
+
+#mainPartieTop{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1.5px solid rgb(85, 85, 85);
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#mainPartieTop img{
+    width: 5%;
+}
+
+#mainPartieTop a{
+    text-decoration: none;
+    color: rgb(54, 54, 54);
+}
+
+#coteGaucheEtDroitFlex{
+    display: flex;
+    height: auto;
+    height: 681px;
+}
+
+#coteGaucheCateAllProd{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1.5px solid grey;
+    overflow-y: scroll;
+    font-size: 13px;
+}
+
+#coteGaucheCateAllProd a{
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+}
+
+#coteGauchePartieCate{
+    border-bottom: 1.5px solid grey;
+}
+
+#allProdImg{
+    margin: 1%;
+}
+
+#allProdImg2{
+    margin: 1%;
+}
+
+#coteDroitListe{
+    width: 100%;
+    overflow-y: scroll;
+}

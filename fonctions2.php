@@ -275,47 +275,10 @@ function addArticle()
 
 }
 
-function updateProduit()
-{
-    if (isset($_POST["updateProduit"])) 
-    {
-        $connexion = mysqli_connect('Localhost','root','','boutique');
-
-        if (!empty($_POST["upNameProduit"])) 
-        {
-            $reqUpName = "UPDATE produits SET nom = '".$_POST['upNameProduit']."' WHERE id = '".$_GET['id']."'";
-            $queryUpName = mysqli_query($connexion, $reqUpName);
-            header('location:produits.php?id='.$_GET['id'].'');
-
-           
-        }
-        if (!empty($_POST['upDescProduit'])) 
-        {
-            $reqUpDesc = "UPDATE produits SET description = '".$_POST['upDescProduit']."' WHERE id = '".$_GET['id']."'";
-            $queryUpName = mysqli_query($connexion, $reqUpDesc);
-            header('location:produits.php?id='.$_GET['id'].'');
-        }
-        if (!empty($_POST['upPrixProduit'])) 
-        {
-            $reqUpPrix = "UPDATE produits SET prix = '".$_POST['upPrixProduit']."' WHERE id = '".$_GET['id']."'";
-            $queryUpName = mysqli_query($connexion, $reqUpPrix);
-            header('location:produits.php?id='.$_GET['id'].'');
-        }
-        if (!empty($_POST['upQuantiteProduit'])) 
-        {
-            $reqUpQuantite = "UPDATE produits SET quantite = '".$_POST['upQuantiteProduit']."' WHERE id = '".$_GET['id']."'";
-            $queryUpName = mysqli_query($connexion, $reqUpQuantite);
-            header('location:produits.php?id='.$_GET['id'].'');
-        }
-
-    }
-}
-
 
 function searchBar()
 {
-
-    if (isset($_POST["search"]) AND strlen($_POST["searchBar"]) != 0) 
+    if (isset($_POST["search"]) AND strlen($_POST["search"]) != 0) 
     {
         $_POST["searchBar"] = htmlspecialchars($_POST["searchBar"]);
         $recherche = $_POST["searchBar"];
@@ -328,15 +291,13 @@ function searchBar()
 
             $requeteSearch = "SELECT * FROM produits WHERE nom LIKE '%$recherche%' ";
             $querySearch = mysqli_query($connexion, $requeteSearch);
-            $resultSearch = mysqli_fetch_all($querySearch); 
+            $resultSearch = mysqli_fetch_all($querySearch);
 
-            $countSearch = count($resultSearch);
-
-            header('location:allproduits.php?search='.$recherche.'&&count='.$countSearch.'');
+            
+            
 
         }
     }
-    
 }
 
     
