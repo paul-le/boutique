@@ -133,7 +133,7 @@ function newCategorie()
 {
     if ($_SESSION['rank'] == 'ADMIN') 
     {
-       if (isset($_POST['addCategorie'])) 
+       if (isset($_POST['addCategorie']) AND strlen($_POST['addCategorie']) != 0) 
        {
             $connexion = mysqli_connect('Localhost','root','','boutique');
             $requeteCat = "SELECT * FROM categories WHERE nom = '".$_POST['categorie']."'";
@@ -165,7 +165,7 @@ function addSubCat()
 {
     if ($_SESSION['rank'] == 'ADMIN') 
     {
-        if (isset($_POST['addSubCat'])) 
+        if (isset($_POST['addSubCat']) AND strlen($_POST['addSubCat']) != 0) 
        {
             $connexion = mysqli_connect('Localhost','root','','boutique');
             $requeteSubCat = "SELECT * FROM sous_categorie INNER JOIN categories ON sous_categorie.id_categorie = categories.id WHERE categories.nom = '".$_POST['categorie']."' AND sous_categorie.nom ='".$_POST['subCat']."' ";
