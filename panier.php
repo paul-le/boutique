@@ -47,7 +47,7 @@ $resultPanier = mysqli_fetch_all($queryPanier);
 
 						</tr>
 						<tr>
-							<td colspan="6"><a href="achat.php" target=" "><input type="submit" name="paiement" value="Paiement"></a></td>
+							<td><input type="submit" name="paiement" value="Paiement"></td>
 						</tr>
 						<?php
 						
@@ -135,18 +135,7 @@ $resultPanier = mysqli_fetch_all($queryPanier);
 
 									$quantiteProduits = $resultPanier[$i][3];
 									$prixArticle = $resultPanier[$i][4];
-									if (isset($_POST["paiement"])) 
-									{
-
-										$addAchat = "INSERT INTO achats (id_utilisateur, id_article, quantite, prix) VALUES ('".$_SESSION['id']."', '".$idArticle."', '".$quantiteProduits."', '".$prixArticle."')"	;
-										$queryAddAchat = mysqli_query($connexion, $addAchat);
-
-										$deletePanier = "DELETE FROM panier WHERE id_article = '".$idArticle."' ";
-										$queryDeletePanier = mysqli_query($connexion, $deletePanier); 
-
-
-										header('Location:achat.php');
-									}
+									
 									
 									
 								$i++;

@@ -23,12 +23,11 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 		<form method="post" action="">
 			<?php
 
-			$achatUser = "SELECT * FROM achats INNER JOIN produits ON achats.id_article = produits.id INNER JOIN utilisateurs ON achats.id_utilisateur = utilisateurs.id";
+			$achatUser = "SELECT * FROM panier INNER JOIN produits ON panier.id_article = produits.id INNER JOIN utilisateurs ON panier.id_utilisateur = utilisateurs.id";
 			$queryAchatUser = mysqli_query($connexion, $achatUser);
 			$resultAchat = mysqli_fetch_all($queryAchatUser);
 
-			var_dump($resultAchat);
-
+		
 
 	
 
@@ -40,15 +39,14 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 			<section id="paiement">
 				<section id="insidePaiement">
 					
-					<?php
-					foreach($resultAchat as $achat)
-						{?>
+					
+					
 							<div>
 								<p>1- Adresse de livraison</p>
 
 								
-									<?php echo $achat[14]; ?><br />
-									<?php echo $achat[17]; ?><br /><br />
+									<?php echo $resultAchat[0][15]; ?><br />
+									<?php echo $resultAchat[0][18]; ?><br /><br />
 								
 							</div>
 							<div>
@@ -60,26 +58,49 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 								Cryptogramme Visuel : <input type="number" placeholder="XXX" min="000" max="999"><br /><br />
 
 							</div>
-
 							<div>
-								<p>3- Article</p>
+									<p>3- Article</p>
+							<?php
 
-								<img src="imgArticle/<?php echo $achat[12] ?>" width ="100" >  <?php echo $achat[8]; ?>  <?php echo $achat[3]; ?>  <?php echo $achat[4].'€'; ?> <br /><br />
+							foreach($resultAchat as $achat)
+							{?>
+								
 
-							</div>
+									<img src="imgArticle/<?php echo $achat[12] ?>" width ="100" >  <?php echo $achat[8]; ?>  <?php echo $achat[3]; ?>  <?php echo $achat[4].'€'; ?> <br /><br />
+
+								</div>
 
 
 							<?php
-						}
-						?>
+							if (isset($_POST['achat'])) 
+							{
+								$addAchat = "INSERT INTO achats (id_utilisateur, id_article, quantite, prix) VALUES ('".$_SESSION['id']."', '".$achat[1]."', '".$achat[3]."', '".$achat[4]."')"	;
+								$queryAddAchat = mysqli_query($connexion, $addAchat);
+
+								$vente = $achat[13] + 1 ;
+								$upVenteProduits = "UPDATE produits SET vente = '".$vente."' WHERE id='".$achat[1]."'";
+								$queryUpVente = mysqli_query($connexion, $upVenteProduits);
+
+								$deletePanier = "DELETE FROM panier WHERE id_article = '".$achat[1]."' ";
+								$queryDeletePanier = mysqli_query($connexion, $deletePanier); 
+
+								header('location:index.php');
+							}
+							}
+							?>
 				</section>
 				<br />
 
-				<a href="index.php"><button>VALIDER</button></a>
+				<input type="submit" name="achat" value="Acheter">
 
 			</section>
 			
+			<?php
+
 			
+
+
+			?>
 
 		</form>
 	</main>

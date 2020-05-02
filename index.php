@@ -154,6 +154,21 @@
                             </section>
                             <section id="meilleuresVentes">
                                 Meilleures ventes
+
+                                <?php
+
+                                $bestVente = "SELECT * FROM produits ORDER BY vente DESC LIMIT 5";
+                                $queryBestVente = mysqli_query($connexion, $bestVente);
+                                $resultVente = mysqli_fetch_all($queryBestVente);
+
+                                foreach ($resultVente as $vente) 
+                                {
+                                    echo '<a href="produits.php?id='.$vente[0].'"><img id="allProdImg2" src="imgArticle/'.$vente[7].'" width = "165.2" height = "220"></a>';
+                                }
+                               
+
+
+                                ?>
                             </section>
                         </section>
                     </section>

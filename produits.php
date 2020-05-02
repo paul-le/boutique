@@ -11,6 +11,8 @@
     $resultatDonneesProduits = mysqli_fetch_all($queryDonneesProduits);
     var_dump($resultatDonneesProduits);
 
+    echo $_SESSION['id'];
+
 ?>
 
 <!DOCTYPE html>
