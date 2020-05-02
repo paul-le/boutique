@@ -282,7 +282,7 @@ ob_start();
 
 														if(isset($_POST["updateProduits$idProduitDelete"]))
 														{
-															header('location:produits.php?id='.$idProduitDelete.'&&modif=1');
+															header('location:produits.php?id='.$idProduitDelete.'&&modif');
 														}
 													?>	
 												</tr>

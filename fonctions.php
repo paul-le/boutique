@@ -280,6 +280,7 @@ function updateProduit()
     if (isset($_POST["updateProduit"])) 
     {
         $connexion = mysqli_connect('Localhost','root','','boutique');
+        
 
         if (!empty($_POST["upNameProduit"])) 
         {
@@ -307,7 +308,7 @@ function updateProduit()
             $queryUpName = mysqli_query($connexion, $reqUpQuantite);
             header('location:produits.php?id='.$_GET['id'].'');
         }
-
+           
     }
 }
 
