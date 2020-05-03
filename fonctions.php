@@ -259,7 +259,7 @@ function addArticle()
                 
 
                 
-                    $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$nomImage."') ";
+                    $requeteNewArticle = "INSERT INTO produits (id_categorie, id_sous_categorie, nom, description, prix, quantite, img, vente) VALUES ('".$resultatCat['id']."', '".$resultatSubCat['id']."', '".$_POST['nameArticle']."', '".$_POST['descArticle']."', '".$_POST['prixArticle']."', '".$_POST['amountArticle']."', '".$nomImage."', '0') ";
                     $queryNewArticle = mysqli_query($connexion, $requeteNewArticle);
                     echo $requeteNewArticle;
 
