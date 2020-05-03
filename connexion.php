@@ -12,7 +12,7 @@ include('fonctions.php');
 </head>
 <body>
 	<?php
-	include('header.php');
+	include('header2.php');
 	?>
 	<main id="mainConnexion">
 		<section id="partieGauche">

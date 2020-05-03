@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 01 mai 2020 à 13:35
+-- Généré le :  Dim 03 mai 2020 à 16:26
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -36,7 +36,16 @@ CREATE TABLE IF NOT EXISTS `achats` (
   `quantite` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `achats`
+--
+
+INSERT INTO `achats` (`id`, `id_utilisateur`, `id_article`, `quantite`, `prix`) VALUES
+(15, 13, 25, 1, 25),
+(14, 13, 25, 1, 25),
+(13, 13, 24, 1, 35);
 
 -- --------------------------------------------------------
 
@@ -102,14 +111,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `quantite` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `panier`
---
-
-INSERT INTO `panier` (`id`, `id_article`, `id_utilisateur`, `quantite`, `prix`) VALUES
-(2, 25, 1, 1, 25);
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -127,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `prix` varchar(255) NOT NULL,
   `quantite` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL,
+  `vente` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
@@ -134,17 +137,17 @@ CREATE TABLE IF NOT EXISTS `produits` (
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `id_categorie`, `id_sous_categorie`, `nom`, `description`, `prix`, `quantite`, `img`) VALUES
-(21, 18, 27, 'Green Hell', 'Toast PC FPS', '20', '500', 'Green Hell.jpg'),
-(20, 19, 26, 'XenoBlade', 'Toast 15', '30', '100', 'XenoBlade.jpg'),
-(19, 19, 25, 'CYBERPUNK 2077', 'Toasty', '50', '500', 'CYBERPUNK 2077.jpg'),
-(18, 19, 24, 'Animal Crossing', 'Yikes', '1', '1000', 'Animal Crossing.jpg'),
-(17, 19, 25, 'Grand Theft Auto', 'Toast', '25', '50', 'Grand Theft Auto.jpg'),
-(16, 18, 28, 'Death Stranding', 'Running simulator', '25', '50', 'Death Stranding.jpg'),
-(22, 18, 29, 'The ElderScroll Online', 'Toast RPG PC', '30', '500', 'The ElderScroll Online.jpg'),
-(23, 19, 24, 'God Of War', 'Toast Console Aventure', '50', '5000', 'God Of War.jpg'),
-(24, 19, 30, 'FIFA 20', 'Toast Console Sport', '35', '500', 'FIFA 20.jpg'),
-(25, 19, 31, 'DBZ Fighter Z', 'Toast Console Combat', '25', '499', 'DBZ Fighter Z.jpg');
+INSERT INTO `produits` (`id`, `id_categorie`, `id_sous_categorie`, `nom`, `description`, `prix`, `quantite`, `img`, `vente`) VALUES
+(21, 18, 27, 'Green Hell', 'Toast PC FPS', '20', '500', 'Green Hell.jpg', '0'),
+(20, 19, 26, 'XenoBlade', 'Toast 16', '30', '100', 'XenoBlade.jpg', '0'),
+(19, 19, 25, 'CYBERPUNK 2077', 'Toasty', '50', '500', 'CYBERPUNK 2077.jpg', '0'),
+(18, 19, 24, 'Animal Crossing', 'Yikes', '1', '1000', 'Animal Crossing.jpg', '0'),
+(17, 19, 25, 'Grand Theft Auto', 'Toast', '25', '50', 'Grand Theft Auto.jpg', '0'),
+(16, 18, 28, 'Death Stranding', 'Running simulator', '25', '50', 'Death Stranding.jpg', '0'),
+(22, 18, 29, 'The ElderScroll Online', 'Toast RPG PC', '30', '500', 'The ElderScroll Online.jpg', '0'),
+(23, 19, 24, 'God Of War', 'Toast Console Aventure', '50', '5000', 'God Of War.jpg', '0'),
+(24, 19, 30, 'FIFA 20', 'Toast Console Sport', '35', '496', 'FIFA 20.jpg', '1'),
+(25, 19, 31, 'DBZ Fighter Z', 'Toast Console Combat', '45', '500', 'DBZ Fighter Z.jpg', '2');
 
 -- --------------------------------------------------------
 
