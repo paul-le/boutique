@@ -128,12 +128,11 @@ $resultPanier = mysqli_fetch_all($queryPanier);
 										if (isset($_POST["paiement"])) 
 										{
 
-											$addAchat = "INSERT INTO achats (id_utilisateur, id_article, quantite, prix) VALUES ('".$_SESSION['id']."', '".$idArticle."', '".$quantiteProduits."', '".$prixArticle."')"	;
-											$queryAddAchat = mysqli_query($connexion, $addAchat);
+											// $addAchat = "INSERT INTO achats (id_utilisateur, id_article, quantite, prix) VALUES ('".$_SESSION['id']."', '".$idArticle."', '".$quantiteProduits."', '".$prixArticle."')"	;
+											// $queryAddAchat = mysqli_query($connexion, $addAchat);
 
-											$deletePanier = "DELETE FROM panier WHERE id_article = '".$idArticle."' ";
-											$queryDeletePanier = mysqli_query($connexion, $deletePanier); 
-
+											// $deletePanier = "DELETE FROM panier WHERE id_article = '".$idArticle."' ";
+											// $queryDeletePanier = mysqli_query($connexion, $deletePanier); 
 
 											header('Location:achat.php');
 										}

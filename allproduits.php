@@ -1,9 +1,28 @@
 <?php 
     session_start();
     include('fonctions.php');
+
     $connexion = mysqli_connect('Localhost','root','','boutique');
 
-    if(isset($_GET['cateid']) && isset($_GET['subcateid']))
+    if (isset($_GET['search'])) 
+        {
+            $recherche = $_GET['search'];
+            $recherche = strtolower($recherche);
+
+            
+
+            $requeteSearch = "SELECT * FROM produits WHERE nom LIKE '%$recherche%' ";
+            $querySearch = mysqli_query($connexion, $requeteSearch);
+            $resultSearch = mysqli_fetch_all($querySearch); 
+
+            
+
+            
+
+        }
+    
+
+    elseif(isset($_GET['cateid']) && isset($_GET['subcateid']))
     {
         $getIdAllProduits2 = $_GET['subcateid'];
 
@@ -92,24 +111,35 @@
             </section>
             <section id="coteDroitListe">
                 <?php 
-                 if(isset($_GET['cateid']) && isset($_GET['subcateid']))
-                 {
+
+                if (isset($_GET['search'])) 
+                {
+                    $counterGeneration = 0;
+                    while($counterGeneration != $_GET['count'])
+                    {
+                        echo '<a href="produits.php?id='.$resultSearch[$counterGeneration][0].'"><img id="allProdImg2" src="imgArticle/'.$resultSearch[$counterGeneration][7].'" width = "165.2" height = "220"></a>';
+                        $counterGeneration++;
+                    }
+                }
+
+                elseif(isset($_GET['cateid']) && isset($_GET['subcateid']))
+                {
                     $counterGeneration = 0;
                     while($counterGeneration != $countSubCatJeux)
                     {
                         echo '<a href="produits.php?id='.$resultatAllProduits2[$counterGeneration][0].'"><img id="allProdImg2" src="imgArticle/'.$resultatAllProduits2[$counterGeneration][7].'" width = "165.2" height = "220"></a>';
                         $counterGeneration++;
                     }
-                 }
-                 else
-                 {
+                }
+                else
+                {
                     $counterGeneration = 0;
                     while($counterGeneration != $countCatJeux)
                     {
                         echo '<a href="produits.php?id='.$resultatAllProduits[$counterGeneration][0].'"> <img id="allProdImg" src="imgArticle/'.$resultatAllProduits[$counterGeneration][7].'" width = "165.2" height = "220"></a>';
                         $counterGeneration++;
                     }
-                 }
+                }
                 ?>
             </section>
         </section>

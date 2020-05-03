@@ -17,6 +17,19 @@
         header("Location:connexion.php");
     }
 
+    $requeteComProfil = "SELECT * FROM commentaires WHERE id_utilisateur=\"$getId\"";
+    $queryComProfil = mysqli_query($connexion,$requeteComProfil);
+    $resultatComProfil = mysqli_fetch_all($queryComProfil);
+    // var_dump($resultatComProfil);
+    $nbCom = count($resultatComProfil);
+
+    $requeteListeArt = "SELECT * FROM achats INNER JOIN produits ON achats.id_article = produits.id INNER JOIN utilisateurs ON achats.id_utilisateur = utilisateurs.id WHERE produits.id = \"$getId\"";
+    $queryListeArt = mysqli_query($connexion,$requeteListeArt);
+    $resultatListeArt = mysqli_fetch_all($queryListeArt);
+    var_dump($resultatListeArt);
+
+
+
 
 ?>
 
@@ -137,7 +150,25 @@
                     </section>
                 
                     <section id="autreInfosProfil">
-                        Commentaires envoyés , articles achetés.
+                        <section id="aboveListeComProfil">
+                            Liste des commentaires envoyés :
+                        </section>
+                        <section id="listeComProfil">
+                            <?php
+                                $countCom = 0;
+                                while($countCom != $nbCom)
+                                {
+                                    echo "<b>Note</b> :".$resultatComProfil[$countCom][4]."/5 | <b>".$resultatComProfil[$countCom][3]."</b><br>";
+                                    $countCom++;
+                                }
+                            ?>
+                        </section>
+                        <section id="aboveListeArtProfil">
+                            Liste des articles achetés :
+                        </section>
+                        <section id="articleAcheteProfil">
+                            
+                        </section>
                     </section>
                 </section>
             </section>

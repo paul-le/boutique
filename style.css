@@ -588,6 +588,7 @@ footer{
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 
 #mainProfilSection2{
@@ -613,7 +614,7 @@ footer{
     display: flex;
     flex-direction: column;
     width: 50%;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-right: 3px black solid;
     font-family: Arial, Helvetica, sans-serif;
@@ -621,8 +622,43 @@ footer{
 
 #autreInfosProfil{
     display: flex;
+    flex-direction: column;
     width: 50%;
-    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+#aboveListeComProfil{
+    border-top: 1px solid black;
+    border-bottom:  1px solid black;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+#aboveListeArtProfil{
+    border-top: 1px solid black;
+    border-bottom:  1px solid black;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+#listeComProfil{
+    width: 97%;
+    height: 49%;
+    overflow-y: scroll;
+    padding: 0.5%;
+    margin-left: 3%;
+}
+
+#articleAcheteProfil{
+    height: 49%;
+    width: 97%;
+    margin-left: 3%;
+    overflow-y: scroll;
 }
 
 
