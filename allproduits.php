@@ -61,7 +61,7 @@
     ?>
     <main id="listeProduitsMain">
         <section id="mainPartieTop">
-            <a href="monpanier.php"><img id="cartIcon" src="Images/carticonpng.png"> Mon panier</a>
+            <a href="panier.php"><img id="cartIcon" src="Images/carticonpng.png"> Mon panier</a>
         </section>
         <section id="coteGaucheEtDroitFlex">
             <section id="coteGaucheCateAllProd">

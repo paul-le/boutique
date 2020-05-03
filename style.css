@@ -13,6 +13,38 @@ body{
     background-color: #141414;
     height: 100px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#formHeaderToast{
+    margin-left: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+#formHeaderInput{
+    background-color: #141414;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    width: 300px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#formHeaderSubmit{
+    background-image: url('Images/recherchericon.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 15px;
+    padding-bottom: 7px;
+    background-color: #141414;
+    display: flex;
 }
 
 #headerH1{
@@ -22,6 +54,8 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: #3bc8da;
 }
+
+
 
 #sectionBottomHeader{
     background-color: #363636;
@@ -989,3 +1023,93 @@ footer{
     width: 100%;
     overflow-y: scroll;
 }
+
+
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+
+#panierMain{
+    background-color: rgba(255, 255, 255, 0.99);
+    width: 60%;
+    margin-left: 20%;
+    height: 681.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: scroll;
+}
+
+#tablePanier{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+
+#tableTopPartie td{
+    font-weight: bold;
+    width: 20%;
+    border-bottom: 3px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#panierName{
+    font-size: 35px;
+    display: flex;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    align-items: center;
+}
+
+#tbodyPanier{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+#generationItemPanier{
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+#panierFlex{
+    display: flex;
+}
+
+#fullFlexPanier{
+    width: 100%;
+}
+
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3bc8da;
+    border-radius: 10px;
+}
+
+#paiementButton{
+    float: right;
+    padding: 5%;
+}
+

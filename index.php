@@ -53,7 +53,7 @@
         </section>
             <section id="partieCentreTop">
                 <section id="testTop">
-                    <a href="monpanier.php"><img id="cartIcon" src="Images/carticonpng.png"> Mon panier</a>
+                    <a href="panier.php"><img id="cartIcon" src="Images/carticonpng.png"> Mon panier</a>
                 </section>
                 <section id="partieCentre">
                     <img src="Images/banniere.jpg">
