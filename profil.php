@@ -23,7 +23,7 @@
     // var_dump($resultatComProfil);
     $nbCom = count($resultatComProfil);
 
-    $requeteListeArt = "SELECT * FROM achats INNER JOIN produits ON achats.id_article = produits.id INNER JOIN utilisateurs ON achats.id_utilisateur = utilisateurs.id WHERE produits.id = \"$getId\"";
+    $requeteListeArt = "SELECT * FROM achats INNER JOIN produits ON achats.id_article = produits.id INNER JOIN utilisateurs ON achats.id_utilisateur = utilisateurs.id WHERE id_utilisateur = \"$getId\"";
     $queryListeArt = mysqli_query($connexion,$requeteListeArt);
     $resultatListeArt = mysqli_fetch_all($queryListeArt);
     var_dump($resultatListeArt);
@@ -43,7 +43,7 @@
 </head>
 <body>
     <?php
-    include('header.php');
+    include('header2.php');
     ?>
     <main>
         <section id="fullFlexProfil">

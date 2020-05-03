@@ -1,5 +1,12 @@
 <header>
         <section id="sectionTopHeader">
+             <form id="formHeaderToast" method="post" action="">
+                <input id="formHeaderInput" type="search" name="searchBar" placeholder="Rechercher">
+                <input id="formHeaderSubmit" type="submit" name="search" value="">
+                <?php
+                searchBar();
+                ?>
+            </form>
             <h1 id="headerH1">Welcome</h1>
         </section>
         <section id="sectionBottomHeader">

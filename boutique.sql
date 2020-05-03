@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 09 avr. 2020 à 10:48
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le :  Dim 03 mai 2020 à 16:26
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,7 +36,16 @@ CREATE TABLE IF NOT EXISTS `achats` (
   `quantite` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `achats`
+--
+
+INSERT INTO `achats` (`id`, `id_utilisateur`, `id_article`, `quantite`, `prix`) VALUES
+(15, 13, 25, 1, 25),
+(14, 13, 25, 1, 25),
+(13, 13, 24, 1, 35);
 
 -- --------------------------------------------------------
 
@@ -49,17 +58,15 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
 INSERT INTO `categories` (`id`, `nom`) VALUES
-(8, 'zerza'),
-(7, 'LOLFDSFS'),
-(6, 'PC'),
-(11, 'vcvcv');
+(19, 'Console'),
+(18, 'PC');
 
 -- --------------------------------------------------------
 
@@ -76,7 +83,19 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
   `note` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `id_utilisateur`, `id_produit`, `commentaire`, `note`, `date`) VALUES
+(29, 1, 8, 'Adadad', 2, '2020-04-15 12:32:27'),
+(28, 1, 8, 'Toast', 4, '2020-04-15 12:32:00'),
+(27, 1, 8, 'Mouais mouais', 4, '2020-04-15 12:30:51'),
+(26, 1, 8, 'Mouais', 3, '2020-04-15 12:30:44'),
+(25, 1, 8, 'Pas fou fou', 2, '2020-04-15 12:30:31'),
+(24, 1, 8, 'sss', 1, '2020-04-15 12:10:31');
 
 -- --------------------------------------------------------
 
@@ -92,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `quantite` int(11) NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -110,16 +129,25 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `prix` varchar(255) NOT NULL,
   `quantite` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL,
+  `vente` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `id_categorie`, `id_sous_categorie`, `nom`, `description`, `prix`, `quantite`, `img`) VALUES
-(11, 11, 8, 'TEST ARTICLE 1 ', 'ezrezr', '34', '100', 'TEST ARTICLE 1 .jpg'),
-(10, 6, 6, 'TEST ART 1r', 'rezrze', '23', '100', 'TEST ART 1r.jpg');
+INSERT INTO `produits` (`id`, `id_categorie`, `id_sous_categorie`, `nom`, `description`, `prix`, `quantite`, `img`, `vente`) VALUES
+(21, 18, 27, 'Green Hell', 'Toast PC FPS', '20', '500', 'Green Hell.jpg', '0'),
+(20, 19, 26, 'XenoBlade', 'Toast 16', '30', '100', 'XenoBlade.jpg', '0'),
+(19, 19, 25, 'CYBERPUNK 2077', 'Toasty', '50', '500', 'CYBERPUNK 2077.jpg', '0'),
+(18, 19, 24, 'Animal Crossing', 'Yikes', '1', '1000', 'Animal Crossing.jpg', '0'),
+(17, 19, 25, 'Grand Theft Auto', 'Toast', '25', '50', 'Grand Theft Auto.jpg', '0'),
+(16, 18, 28, 'Death Stranding', 'Running simulator', '25', '50', 'Death Stranding.jpg', '0'),
+(22, 18, 29, 'The ElderScroll Online', 'Toast RPG PC', '30', '500', 'The ElderScroll Online.jpg', '0'),
+(23, 19, 24, 'God Of War', 'Toast Console Aventure', '50', '5000', 'God Of War.jpg', '0'),
+(24, 19, 30, 'FIFA 20', 'Toast Console Sport', '35', '496', 'FIFA 20.jpg', '1'),
+(25, 19, 31, 'DBZ Fighter Z', 'Toast Console Combat', '45', '500', 'DBZ Fighter Z.jpg', '2');
 
 -- --------------------------------------------------------
 
@@ -131,18 +159,23 @@ DROP TABLE IF EXISTS `sous_categorie`;
 CREATE TABLE IF NOT EXISTS `sous_categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_categorie` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
+  `nom` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `sous_categorie`
 --
 
 INSERT INTO `sous_categorie` (`id`, `id_categorie`, `nom`) VALUES
-(6, 7, 'rezr'),
-(9, 6, 'rerzer'),
-(8, 7, 'erer');
+(31, 19, 'Combat(console)'),
+(30, 19, 'Sport(console)'),
+(29, 18, 'RPG(pc)'),
+(27, 18, 'FPS(pc)'),
+(28, 18, 'Aventure(pc)'),
+(26, 19, 'RPG(console)'),
+(25, 19, 'FPS(console)'),
+(24, 19, 'Aventure(console)');
 
 -- --------------------------------------------------------
 
@@ -159,18 +192,16 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `adresse` varchar(255) NOT NULL,
   `rank` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`, `mail`, `adresse`, `rank`) VALUES
-(3, 'Katakuri', '$2y$12$No/33BWJ0ZofM5BtuxrdjuisIQhHLXFO4mCij0I4F7t7bUNt7AMvO', 'kata@gmail.com', 'azrerzerz', 'MEMBRE'),
-(4, 'Zoro', '$2y$10$XYfvUIuWkMlM4Hncfyjkn.dkGRzZY/V0f92oPkinMICsTd9J4qAFe', 'zoro@gmail.com', 'ZORORORO', 'MEMBRE'),
-(5, 'Usopp', '$2y$10$lOPOKasv8swmy1LncyGc8u2i83hkDe5ROj59istBXoIhZcMzlj2o2', 'usopp@gmail.com', 'LOPLPDLPL', 'MEMBRE'),
-(6, 'vizdjfv', '$2y$10$IFsN1SfsQGp.0HaK2jYC1.J5E3Qfn2PlqIUAv59cwLfsZyQ9H3oxi', 'fdf@gdf.com', 'lfdsvfsd', 'MEMBRE'),
-(9, 'admin', '$2y$10$kAmRzw5gBNGF87m8I5S/3./p8ndiRABEBTTsbr76Mnoe5WkUQK44u', 'admin@gmail.com', 'adminnnnn', 'ADMIN');
+(13, 'smoladmin', '$2y$10$VGlZMlgCrPgFcx8wx2oJ1Oh80DfbzTmugp8zl8YoFjkPb5H3lgdS2', 'smoladmin@gmail.com', 'smoladmin land', 'ADMIN'),
+(12, 'Paul', '$2y$10$zCkdn64qzXMtgxJ4ZWMEQenYhcFTA5p2Tr.Jy85ZLoGsUS5aUMonS', 'Paul@gmail.com', 'Paulooooo', 'ADMIN'),
+(1, 'BigAdminToast', '$2y$12$63ZeYqRhlJJWV4Y2sLTGL.ScW6TNZDP7Aj0HExw5SDUOw63UXXJki', 'bigadmin@gmail.com', 'bigadmin adresse', 'ADMIN');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
