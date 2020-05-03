@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    include('fonctions.php');
     ob_start();
     $connexion = mysqli_connect("localhost", "root" ,"","boutique");
     $getId = $_GET['id'];

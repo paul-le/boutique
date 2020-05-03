@@ -23,7 +23,7 @@
                         </li>
                     <?php } elseif(isset($_SESSION['login']) && $_SESSION['rank'] == "ADMIN"){ ?>
                         <li>
-                            <a href="profil.php"><img id="iconAccount" src="Images/iconacc.png">Mon compte </a>
+                            <a href="profil.php?id=<?php echo $_SESSION['id']; ?>"><img id="iconAccount" src="Images/iconacc.png">Mon compte </a>
                         </li>
                         <li>
                             <a href="admin.php"><img id="iconAccount" src="Images/iconacc.png">Administrateur </a>
