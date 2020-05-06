@@ -9,10 +9,6 @@
     $requeteDonneesProduits = "SELECT * FROM produits WHERE id=\"$getIdProduit\"";
     $queryDonneesProduits = mysqli_query($connexion,$requeteDonneesProduits);
     $resultatDonneesProduits = mysqli_fetch_all($queryDonneesProduits);
-    var_dump($resultatDonneesProduits);
-
-    
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +45,7 @@
                                 <?php echo $resultatDonneesProduits[0][4]; ?>
                             </section>
                             <section class="prixDuProduit">
-                                <?php echo "".$resultatDonneesProduits[0][5]."€"; ?> <br> <?php echo "Quantité : ".$resultatDonneesProduits[0][6]."" ?> <br> 
+                                <?php echo "Prix : ".$resultatDonneesProduits[0][5]."€<br><br>"; ?> <?php echo "Quantité : ".$resultatDonneesProduits[0][6]."" ?> <br> 
                                 <select  name="quantiteProduit">
 									<option value="1">1</option>
 									<option value="2">2</option>

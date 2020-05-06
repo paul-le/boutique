@@ -946,30 +946,40 @@ footer{
 
 #partieCentreProduitsDroite{
     width: 50%;
-    background-color: tomato;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    border-right: 2px solid black;
 }
 
 .nomDuProduit{
     width: 100%;
-    background-color: turquoise;
     /* height: 10%; */
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .descDuProduit{
-    width: 100%;
-    background-color: violet;
-    /* height: 75%; */
+    width: 96%;
+    height: 96%;
+    margin: 2%;
+    /* margin-top: 2%; */
     height: 450px;
 }
 
 .prixDuProduit{
     width: 100%;
-    background-color: grey;
-    /* height: 15%; */
+    background-color: rgb(206, 206, 206);
     height: 115px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #commentaireProduitSection{
