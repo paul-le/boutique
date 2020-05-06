@@ -19,7 +19,7 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
     include('header2.php');
     
     ?>
-	<main>
+	<main id="mainAchat">
 		<form method="post" action="">
 			<?php
 
@@ -38,19 +38,13 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 
 			<section id="paiement">
 				<section id="insidePaiement">
-					
-					
-					
 							<div>
-								<p>1- Adresse de livraison</p>
-
-								
+								<h1>1- Adresse de livraison</h1>
 									<?php echo $resultAchat[0][15]; ?><br />
 									<?php echo $resultAchat[0][18]; ?><br /><br />
-								
 							</div>
 							<div>
-								<p>2- Selectionnez un moyen de paiement</p>
+								<h1>2- Selectionnez un moyen de paiement</h1>
 
 								Numéro de la carte : <input type="text" name="" placeholder="XXXX XXXX XXXX XXXX"><br /><br />
 								Nom du titulaire : &nbsp&nbsp&nbsp <input type="text" ><br /><br />
@@ -59,14 +53,14 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 
 							</div>
 							<div>
-									<p>3- Article</p>
+									<h1>3- Article</h1>
 							<?php
 
 							foreach($resultAchat as $achat)
 							{?>
 								
 
-									<img src="imgArticle/<?php echo $achat[12] ?>" width ="100" >  <?php echo $achat[8]; ?>  <?php echo $achat[3]; ?>  <?php echo $achat[4].'€'; ?> <br /><br />
+									<img src="imgArticle/<?php echo $achat[12] ?>" width ="100" ><br> <?php echo "<b>".$achat[8]."</b>"; ?>  <?php echo "x".$achat[3]; ?>  <?php echo $achat[4].'€'; ?> <br /><br />
 
 								</div>
 
@@ -92,14 +86,10 @@ $connexion = mysqli_connect('Localhost','root','','boutique');
 				<br />
 
 				<input type="submit" name="achat" value="Acheter">
-
+				<br><br>
 			</section>
 			
 			<?php
-
-			
-
-
 			?>
 
 		</form>

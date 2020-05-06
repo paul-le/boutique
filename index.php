@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <title>Boutique en ligne</title>
 </head>
 <body>
     <?php
@@ -151,25 +151,28 @@
                         </section>
                         <section id="banniereSeparation">
 
-                            </section>
-                            <section id="meilleuresVentes">
-                                Meilleures ventes
+                        </section>
+                        <section id="meilleuresVentesTopBar">
+                            Meilleures ventes
+                        </section>
+                        <section id="meilleuresVentes">
+                            <img id="imgFirstPlace" src="Images/firstplace.png">
+                            <img id="imgSecondPlace" src="Images/secondplace.png">
+                            <?php
 
-                                <?php
+                            $bestVente = "SELECT * FROM produits ORDER BY vente DESC LIMIT 5";
+                            $queryBestVente = mysqli_query($connexion, $bestVente);
+                            $resultVente = mysqli_fetch_all($queryBestVente);
 
-                                $bestVente = "SELECT * FROM produits ORDER BY vente DESC LIMIT 5";
-                                $queryBestVente = mysqli_query($connexion, $bestVente);
-                                $resultVente = mysqli_fetch_all($queryBestVente);
-
-                                foreach ($resultVente as $vente) 
-                                {
-                                    echo '<a href="produits.php?id='.$vente[0].'"><img id="allProdImg2" src="imgArticle/'.$vente[7].'" width = "165.2" height = "220"></a>';
-                                }
+                            foreach ($resultVente as $vente) 
+                            {
+                                echo '<a href="produits.php?id='.$vente[0].'"><img id="allProdImg2" src="imgArticle/'.$vente[7].'" width = "165.2" height = "220"></a>';
+                            }
                                
 
 
-                                ?>
-                            </section>
+                            ?>
+                        </section>
                         </section>
                     </section>
                 </section>
