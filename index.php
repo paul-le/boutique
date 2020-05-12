@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    // var_dump($_SESSION);
+
     include('fonctions.php');
     ob_start();
 
@@ -10,25 +10,25 @@
     $requeteListeJeux = "SELECT * FROM produits ORDER BY id DESC LIMIT 5";
     $queryListeJeux = mysqli_query($connexion,$requeteListeJeux);
     $resultatListeJeux = mysqli_fetch_all($queryListeJeux);
-    // var_dump($resultatListeJeux);
+    
     $nbProduits = count($resultatListeJeux);
 
-    // $requeteCom = "SELECT * FROM commentaires ORDER BY id DESC LIMIT 5";
+    
     $requeteCom = "SELECT c.*,u.login FROM commentaires AS c INNER JOIN utilisateurs AS u ON c.id_utilisateur = u.id ORDER BY c.id DESC LIMIT 5";
     $queryCom = mysqli_query($connexion,$requeteCom);
     $resultatCom = mysqli_fetch_all($queryCom);
-    // var_dump($resultatCom);
+   
 
     $requeteListeCate="SELECT * FROM categories";
     $queryListeCate = mysqli_query($connexion,$requeteListeCate);
     $resultatListeCate = mysqli_fetch_all($queryListeCate);
-    // var_dump($resultatListeCate);
+   
     $nbCate = count($resultatListeCate);
 
     $requeteListeSousCate="SELECT * FROM sous_categorie";
     $queryListeSousCate = mysqli_query($connexion,$requeteListeSousCate);
     $resultatListeSousCate = mysqli_fetch_all($queryListeSousCate);
-    // var_dump($resultatListeSousCate);
+   
     $nbSousCate = count($resultatListeSousCate);
 
 

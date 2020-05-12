@@ -10,7 +10,7 @@
     $queryInfosProfil = mysqli_query($connexion,$requeteInfosProfil);
     $resultatInfosProfil = mysqli_fetch_all($queryInfosProfil);
 
-    var_dump($resultatInfosProfil);
+
     
     if(!isset($_SESSION['login']))
     {
@@ -20,13 +20,13 @@
     $requeteComProfil = "SELECT * FROM commentaires WHERE id_utilisateur=\"$getId\"";
     $queryComProfil = mysqli_query($connexion,$requeteComProfil);
     $resultatComProfil = mysqli_fetch_all($queryComProfil);
-    // var_dump($resultatComProfil);
+   
     $nbCom = count($resultatComProfil);
 
     $requeteListeArt = "SELECT * FROM achats INNER JOIN produits ON achats.id_article = produits.id INNER JOIN utilisateurs ON achats.id_utilisateur = utilisateurs.id WHERE id_utilisateur = \"$getId\"";
     $queryListeArt = mysqli_query($connexion,$requeteListeArt);
     $resultatListeArt = mysqli_fetch_all($queryListeArt);
-    var_dump($resultatListeArt);
+    
     $nbJeux = count($resultatListeArt);
 
 

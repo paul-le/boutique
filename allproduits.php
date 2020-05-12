@@ -30,17 +30,11 @@
         $queryAllProduits2 = mysqli_query($connexion,$requeteAllProduits2);
         $resultatAllProduits2 = mysqli_fetch_all($queryAllProduits2);
 
-        // var_dump($resultatAllProduits2);
+       
         $countSubCatJeux = count($resultatAllProduits2);
-        // var_dump($countSubCatJeux);
+      
 
-        // $getIdAllProduits = $_GET['cateid'];
-
-        // $requeteAllProduits = "SELECT * FROM produits WHERE id_categorie=\"$getIdAllProduits\"";
-        // $queryAllProduits = mysqli_query($connexion,$requeteAllProduits);
-        // $resultatAllProduits = mysqli_fetch_all($queryAllProduits);
-            
-        // var_dump($resultatAllProduits);
+        
     }
     else
     {
@@ -50,9 +44,8 @@
         $queryAllProduits = mysqli_query($connexion,$requeteAllProduits);
         $resultatAllProduits = mysqli_fetch_all($queryAllProduits);
     
-        // var_dump($resultatAllProduits);
         $countCatJeux = count($resultatAllProduits);
-        // var_dump($countCatJeux);
+        
     }
 
     $requeteListeCate="SELECT * FROM categories";
