@@ -2,7 +2,6 @@
 
     session_start();
     include('fonctions.php');
-    var_dump($_SESSION);
     ob_start();
     $getIdProduit = $_GET['id'];
     $connexion = mysqli_connect('Localhost','root','','boutique');
@@ -46,6 +45,7 @@
                             </section>
                             <section class="prixDuProduit">
                                 <?php echo "Prix : ".$resultatDonneesProduits[0][5]."€<br><br>"; ?> <?php echo "Quantité : ".$resultatDonneesProduits[0][6]."" ?> <br> 
+                                <?php if(isset($_SESSION['login'])){ ?>
                                 <select  name="quantiteProduit">
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -53,7 +53,8 @@
 									<option value="4">4</option>
 									<option value="5">5</option>
                                 </select>
-                                <input type="submit" name="addPanier" value="Add">
+                                <input type="submit" name="addPanier" value="Ajouter au panier">
+                                <?php } else {} ?>
                             </section>
                             <!-- <section class="choixQuantiteProduit">
                                 <select  name="quantiteProduit">
@@ -82,7 +83,7 @@
                             $nbCom = count($resultatListeCom);
                             if($nbCom != 0)
                             {
-                            while($i != 4)
+                            while($i != $nbCom)
                             { ?> <section id="commentaireSurLeProduit"> <?php
                                 $dateComTest = date(("d-m-Y H:i:s") , strtotime($resultatListeCom[$i][5]));
                                 echo "<b>Note</b> : ".$resultatListeCom[$i][4]."/5 | <b>".$resultatListeCom[$i][6]." : </b> ".$resultatListeCom[$i][3]." le <b>".$dateComTest."</b><br><br>";
@@ -93,7 +94,7 @@
                         }
                                 
                         ?>
-                        
+                        <?php if(isset($_SESSION['login'])){ ?>
                         <section id="commentaireFormTopBar">
                             Écrire un commentaire :
                         </section>
@@ -110,6 +111,7 @@
                                 <textarea id="textAreaCommentaire" name="commentaireProduit" rows="7" cols="50" placeholder="Votre commentaire"></textarea>
                                 <input type="submit" name="envoyerCommentaire" value="Envoyer">
                             </form>
+                            <?php } else {} ?>
                             <?php
                                 if(isset($_POST['envoyerCommentaire']))
                                 {
@@ -141,7 +143,7 @@
 
     <section>
         <?php
-        if ($_SESSION["rank"] == 'ADMIN' && isset($_GET['id']) && isset($_GET['modif'])) 
+        if (isset($_SESSION["rank"]) && $_SESSION["rank"] == 'ADMIN' && isset($_GET['id']) && isset($_GET['modif'])) 
             {?>
                 <form method="post" action="">
                     <section id="partieCentreTopProduits">
