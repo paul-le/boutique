@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    // var_dump($_SESSION);
+
     include('fonctions.php');
     ob_start();
 
@@ -10,25 +10,25 @@
     $requeteListeJeux = "SELECT * FROM produits ORDER BY id DESC LIMIT 5";
     $queryListeJeux = mysqli_query($connexion,$requeteListeJeux);
     $resultatListeJeux = mysqli_fetch_all($queryListeJeux);
-    // var_dump($resultatListeJeux);
+    
     $nbProduits = count($resultatListeJeux);
 
-    // $requeteCom = "SELECT * FROM commentaires ORDER BY id DESC LIMIT 5";
+    
     $requeteCom = "SELECT c.*,u.login FROM commentaires AS c INNER JOIN utilisateurs AS u ON c.id_utilisateur = u.id ORDER BY c.id DESC LIMIT 5";
     $queryCom = mysqli_query($connexion,$requeteCom);
     $resultatCom = mysqli_fetch_all($queryCom);
-    // var_dump($resultatCom);
+   
 
     $requeteListeCate="SELECT * FROM categories";
     $queryListeCate = mysqli_query($connexion,$requeteListeCate);
     $resultatListeCate = mysqli_fetch_all($queryListeCate);
-    // var_dump($resultatListeCate);
+   
     $nbCate = count($resultatListeCate);
 
     $requeteListeSousCate="SELECT * FROM sous_categorie";
     $queryListeSousCate = mysqli_query($connexion,$requeteListeSousCate);
     $resultatListeSousCate = mysqli_fetch_all($queryListeSousCate);
-    // var_dump($resultatListeSousCate);
+   
     $nbSousCate = count($resultatListeSousCate);
 
 
@@ -40,11 +40,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <title>Boutique en ligne</title>
 </head>
 <body>
     <?php
-    include('header.php');
+    include('header2.php');
     ?>
     <main>
     <section id="flexFull">
@@ -151,25 +151,28 @@
                         </section>
                         <section id="banniereSeparation">
 
-                            </section>
-                            <section id="meilleuresVentes">
-                                Meilleures ventes
+                        </section>
+                        <section id="meilleuresVentesTopBar">
+                            Meilleures ventes
+                        </section>
+                        <section id="meilleuresVentes">
+                            <img id="imgFirstPlace" src="Images/firstplace.png">
+                            <img id="imgSecondPlace" src="Images/secondplace.png">
+                            <?php
 
-                                <?php
+                            $bestVente = "SELECT * FROM produits ORDER BY vente DESC LIMIT 5";
+                            $queryBestVente = mysqli_query($connexion, $bestVente);
+                            $resultVente = mysqli_fetch_all($queryBestVente);
 
-                                $bestVente = "SELECT * FROM produits ORDER BY vente DESC LIMIT 5";
-                                $queryBestVente = mysqli_query($connexion, $bestVente);
-                                $resultVente = mysqli_fetch_all($queryBestVente);
-
-                                foreach ($resultVente as $vente) 
-                                {
-                                    echo '<a href="produits.php?id='.$vente[0].'"><img id="allProdImg2" src="imgArticle/'.$vente[7].'" width = "165.2" height = "220"></a>';
-                                }
+                            foreach ($resultVente as $vente) 
+                            {
+                                echo '<a href="produits.php?id='.$vente[0].'"><img id="allProdImg2" src="imgArticle/'.$vente[7].'" width = "165.2" height = "220"></a>';
+                            }
                                
 
 
-                                ?>
-                            </section>
+                            ?>
+                        </section>
                         </section>
                     </section>
                 </section>

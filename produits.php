@@ -2,15 +2,12 @@
 
     session_start();
     include('fonctions.php');
-    var_dump($_SESSION);
     ob_start();
     $getIdProduit = $_GET['id'];
     $connexion = mysqli_connect('Localhost','root','','boutique');
     $requeteDonneesProduits = "SELECT * FROM produits WHERE id=\"$getIdProduit\"";
     $queryDonneesProduits = mysqli_query($connexion,$requeteDonneesProduits);
     $resultatDonneesProduits = mysqli_fetch_all($queryDonneesProduits);
-    var_dump($resultatDonneesProduits);
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +20,7 @@
 </head>
 <body>
     <?php
-    include('header.php');
+    include('header2.php');
     ?>
     <main>
         <form method="POST" action="">
@@ -47,7 +44,8 @@
                                 <?php echo $resultatDonneesProduits[0][4]; ?>
                             </section>
                             <section class="prixDuProduit">
-                                <?php echo "".$resultatDonneesProduits[0][5]."€"; ?> <br> <?php echo "Quantité : ".$resultatDonneesProduits[0][6]."" ?> <br> 
+                                <?php echo "Prix : ".$resultatDonneesProduits[0][5]."€<br><br>"; ?> <?php echo "Quantité : ".$resultatDonneesProduits[0][6]."" ?> <br> 
+                                <?php if(isset($_SESSION['login'])){ ?>
                                 <select  name="quantiteProduit">
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -55,7 +53,8 @@
 									<option value="4">4</option>
 									<option value="5">5</option>
                                 </select>
-                                <input type="submit" name="addPanier" value="Add">
+                                <input type="submit" name="addPanier" value="Ajouter au panier">
+                                <?php } else {} ?>
                             </section>
                             <!-- <section class="choixQuantiteProduit">
                                 <select  name="quantiteProduit">
@@ -84,7 +83,7 @@
                             $nbCom = count($resultatListeCom);
                             if($nbCom != 0)
                             {
-                            while($i != 4)
+                            while($i != $nbCom)
                             { ?> <section id="commentaireSurLeProduit"> <?php
                                 $dateComTest = date(("d-m-Y H:i:s") , strtotime($resultatListeCom[$i][5]));
                                 echo "<b>Note</b> : ".$resultatListeCom[$i][4]."/5 | <b>".$resultatListeCom[$i][6]." : </b> ".$resultatListeCom[$i][3]." le <b>".$dateComTest."</b><br><br>";
@@ -95,7 +94,7 @@
                         }
                                 
                         ?>
-                        
+                        <?php if(isset($_SESSION['login'])){ ?>
                         <section id="commentaireFormTopBar">
                             Écrire un commentaire :
                         </section>
@@ -112,6 +111,7 @@
                                 <textarea id="textAreaCommentaire" name="commentaireProduit" rows="7" cols="50" placeholder="Votre commentaire"></textarea>
                                 <input type="submit" name="envoyerCommentaire" value="Envoyer">
                             </form>
+                            <?php } else {} ?>
                             <?php
                                 if(isset($_POST['envoyerCommentaire']))
                                 {
@@ -140,6 +140,43 @@
         </section> -->
     </section>
     </form>
+
+    <section>
+        <?php
+        if (isset($_SESSION["rank"]) && $_SESSION["rank"] == 'ADMIN' && isset($_GET['id']) && isset($_GET['modif'])) 
+            {?>
+                <form method="post" action="">
+                    <section id="partie-modif-flex">
+
+                        <section id="partieCentreProduits">
+                            <section id="imgSectionModif">
+
+                                <img src="imgArticle/<?php echo $resultatDonneesProduits[0][7] ?>">
+
+                            </section>
+                            <section id="modifierSection">
+                                <section class="nomDuProduit">
+                                    <input type="text" name="upNameProduit" placeholder="<?php echo $resultatDonneesProduits[0][3]; ?>">
+                                </section>
+                                <section class="descDuProduit">
+                                    <input type="textarea" name="upDescProduit" placeholder="<?php echo $resultatDonneesProduits[0][4]; ?>">
+                                </section>
+                                <section class="prixDuProduit">
+                                    <input type="number" name="upPrixProduit" placeholder="<?php echo "".$resultatDonneesProduits[0][5]; ?>"> <br> Quantité : <input type="number" name="upQuantiteProduit" placeholder="<?php echo "".$resultatDonneesProduits[0][6]."" ?>">
+                                </section>
+                            </section>
+                        </section>
+                        
+                        <input id="modifier-produit-admin" type="submit" name="updateProduit" value="Modifier">
+
+                    </section>
+                </form>
+                <?php
+                updateProduit();
+            }
+            ?>
+            
+        </section>
     </main>
         <?php
     include('footer.php');
@@ -149,60 +186,60 @@
 </html>
 
 <?php
-								
-								$requeteProduits = "SELECT * FROM produits WHERE id = '$getIdProduit'";
-								$queryProduits = mysqli_query($connexion, $requeteProduits);
-                                $resultProduits = mysqli_fetch_all($queryProduits);
-                                
-								$requeteArticle = "SELECT * FROM panier WHERE id_article = '".$getIdProduit."' ";
-								$queryArticle = mysqli_query($connexion, $requeteArticle);
-								$resultArticle = mysqli_fetch_all($queryArticle);
 
-								if (isset($_POST["addPanier"])) 
-								{
-									
+$requeteProduits = "SELECT * FROM produits WHERE id = '$getIdProduit'";
+$queryProduits = mysqli_query($connexion, $requeteProduits);
+$resultProduits = mysqli_fetch_all($queryProduits);
 
-									$prixProduit = $resultatDonneesProduits[0][5] * $_POST["quantiteProduit"];
+$requeteArticle = "SELECT * FROM panier WHERE id_article = '".$getIdProduit."' ";
+$queryArticle = mysqli_query($connexion, $requeteArticle);
+$resultArticle = mysqli_fetch_all($queryArticle);
 
-									if (empty($resultArticle)) 
-									{
-										
-										
-										$requeteAddArticle = "INSERT INTO panier (id_article, id_utilisateur, quantite, prix) VALUES ('".$getIdProduit."', '".$_SESSION['id']."', '".$_POST["quantiteProduit"]."', '".$prixProduit."')";
-										$queryAddArticle = mysqli_query($connexion, $requeteAddArticle);
+if (isset($_POST["addPanier"])) 
+{
 
-										$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
-										$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
-										$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
+
+   $prixProduit = $resultatDonneesProduits[0][5] * $_POST["quantiteProduit"];
+
+   if (empty($resultArticle)) 
+   {
+
+
+      $requeteAddArticle = "INSERT INTO panier (id_article, id_utilisateur, quantite, prix) VALUES ('".$getIdProduit."', '".$_SESSION['id']."', '".$_POST["quantiteProduit"]."', '".$prixProduit."')";
+      $queryAddArticle = mysqli_query($connexion, $requeteAddArticle);
+
+      $newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
+      $requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
+      $queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 										// header('Location:panier.php');
-										
-									}
-									else
-									{
-										if ($resultProduits[0][6] > 0) 
-										{
-											
-											$newQuantiteProduit = $resultArticle[0][3] + $_POST["quantiteProduit"];
-											$requeteUpdateQuantite = "UPDATE panier set quantite = '".$newQuantiteProduit."' WHERE id_article = '$getIdProduit' ";
-											$queryUpdateQuantite = mysqli_query($connexion, $requeteUpdateQuantite);
 
-											$newPrixProduit = $prixProduit + $resultArticle[0][4];
+  }
+  else
+  {
+      if ($resultProduits[0][6] > 0) 
+      {
 
-											$newPrix = "UPDATE panier set prix = '".$newPrixProduit."' WHERE id_article = '$getIdProduit'";
-											$queryNewprix = mysqli_query($connexion, $newPrix);
+         $newQuantiteProduit = $resultArticle[0][3] + $_POST["quantiteProduit"];
+         $requeteUpdateQuantite = "UPDATE panier set quantite = '".$newQuantiteProduit."' WHERE id_article = '$getIdProduit' ";
+         $queryUpdateQuantite = mysqli_query($connexion, $requeteUpdateQuantite);
+
+         $newPrixProduit = $prixProduit + $resultArticle[0][4];
+
+         $newPrix = "UPDATE panier set prix = '".$newPrixProduit."' WHERE id_article = '$getIdProduit'";
+         $queryNewprix = mysqli_query($connexion, $newPrix);
 
 
-											$newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
-											$requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
-											$queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
+         $newFullQuantite = $resultProduits[0][6] - $_POST["quantiteProduit"];
+         $requeteUpdateFullQuantite = "UPDATE produits set quantite = '".$newFullQuantite."' WHERE id = '$getIdProduit'";
+         $queryUpdateFullQuantite = mysqli_query($connexion, $requeteUpdateFullQuantite);
 
-											header('Location:panier.php');
+         header('Location:panier.php');
 
-										}
-										else
-										{
-											echo "PRODUIT EPUISE";
-										}
-									}
-								}
-						?>
+     }
+     else
+     {
+         echo "PRODUIT EPUISE";
+     }
+ }
+}
+?>

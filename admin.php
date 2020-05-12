@@ -15,7 +15,7 @@ ob_start();
 </head>
 <body>
 	<?php
-	include('header.php');
+	include('header2.php');
 	?>
 	<main>
 		<section id="adminPanel">
@@ -119,8 +119,7 @@ ob_start();
 							$requeteSubCat = "SELECT * FROM sous_categorie INNER JOIN categories ON sous_categorie.id_categorie = categories.id";
 							$querySubCat = mysqli_query($connexion, $requeteSubCat);
 							$resultatSubCat = mysqli_fetch_all($querySubCat);
-							// var_dump($resultatSubCat);
-
+							
 							$nbSubCat = count($resultAllSubCat);
 							
 							$i = 0;
@@ -139,7 +138,7 @@ ob_start();
 								{
 									$requeteUpdateSubCat = "UPDATE sous_categorie set nom = '".$_POST['upSubCat']."' WHERE nom = '".$nomSubCat."'";
 									$queryUpdateSubCat = mysqli_query($connexion, $requeteUpdateSubCat);
-									// echo $requeteUpdateSubCat;
+									
 									header('location:admin.php');
 								}
 								if (isset($_POST["deleteSubCat$idSubCat"])) 
@@ -270,7 +269,7 @@ ob_start();
 													<input id="buttonAdmin2" type="submit"  name="supprimerProduit<?php echo $resultInfosArticle[$i][0] ; ?>" value="Supprimer">
 													</td>
 													<?php
-														// $deleteArticle = $_POST["supprimerProduit'".$resultInfosArticle[$i][0]."'"];
+
 														$idProduitDelete = $resultInfosArticle[$i][0];
 													
 														if(isset($_POST["supprimerProduit$idProduitDelete"]))

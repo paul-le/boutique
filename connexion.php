@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('fonctions.php');
 ?>
 
 
@@ -11,7 +12,7 @@ session_start();
 </head>
 <body>
 	<?php
-	include('header.php');
+	include('header2.php');
 	?>
 	<main id="mainConnexion">
 		<section id="partieGauche">
@@ -29,7 +30,7 @@ session_start();
 
 					<?php
 
-					include('fonctions.php');
+					
 					connexion();
 
 					?>
