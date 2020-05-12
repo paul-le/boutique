@@ -32,7 +32,14 @@ if (isset($_SESSION['id']))
 				<table id="tablePanier">
 					<thead>
 						<tr id="panierName">
-							<td colspan="6">Panier de : <?php echo $_SESSION['login'] ?></td>
+							<?php
+							if (isset($_SESSION['login']))
+							{?>
+								<td colspan="6">Panier de : <?php echo $_SESSION['login'] ?></td>
+								
+							<?php
+							}
+							?>
 						</tr>
 					</thead>
 					<tbody id="tbodyPanier">
@@ -45,46 +52,46 @@ if (isset($_SESSION['id']))
 							<td></td>
 						</tr>
 							<?php
-							
-							$nbProduit = count($resultPanier);
-							
-
-							if ($nbProduit == 0) 
+							if (isset($_SESSION['id'])) 
 							{
-								echo "Votre Panier est vide";
-							}
-							else
-							{
-								$i = 0 ;
-								$prixTotal = 0;
-								while ($i != $nbProduit) 
+						
+								$nbProduit = count($resultPanier);
+								if ($nbProduit == 0) 
 								{
-									
-									$idProduit = $resultPanier[$i][0];
-									$idArticle = $resultPanier[$i][1];
-									?>
-									<tr id="generationItemPanier">
-										<td><?php echo $resultPanier[$i][8]; ?></td>
-										<td><img src="imgArticle/<?php echo $resultPanier[$i][12] ?>" width ="100" ></td>
-										<td><?php echo $resultPanier[$i][3]; ?></td>
-										<td>
-											<select name="addQuantite<?php echo $resultPanier[$i][0]; ?>">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>
-											<input type="submit" name="newAdd<?php echo $resultPanier[$i][0]; ?>" value="Add">
-										</td>
-										<td><?php echo $resultPanier[$i][4]; ?></td>
+									echo "Votre Panier est vide";
+								}
+								else
+								{
+									$i = 0 ;
+									$prixTotal = 0;
+									while ($i != $nbProduit) 
+									{
 
-										<td>
-											<input type="submit" name="deleteProduit<?php echo $resultPanier[$i][0]; ?>" value="Supprimer">
-										</td>
-									</tr>
+										$idProduit = $resultPanier[$i][0];
+										$idArticle = $resultPanier[$i][1];
+										?>
+										<tr id="generationItemPanier">
+											<td><?php echo $resultPanier[$i][8]; ?></td>
+											<td><img src="imgArticle/<?php echo $resultPanier[$i][12] ?>" width ="100" ></td>
+											<td><?php echo $resultPanier[$i][3]; ?></td>
+											<td>
+												<select name="addQuantite<?php echo $resultPanier[$i][0]; ?>">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
+												<input type="submit" name="newAdd<?php echo $resultPanier[$i][0]; ?>" value="Add">
+											</td>
+											<td><?php echo $resultPanier[$i][4]; ?></td>
 
-									<?php
+											<td>
+												<input type="submit" name="deleteProduit<?php echo $resultPanier[$i][0]; ?>" value="Supprimer">
+											</td>
+										</tr>
+
+										<?php
 
 										if (isset($_POST["newAdd$idProduit"])) 
 										{
@@ -143,19 +150,22 @@ if (isset($_SESSION['id']))
 										}
 										
 										
-									$i++;
+										$i++;
+									}
+									?>
+									<tr>
+										<td colspan="6"> <br> <b>Montant Total : <?php echo $prixTotal ; ?> € </b></td>
+									</tr>
+									<tr id="paiementButton">
+										<td colspan="6"><a href="achat.php" target=" "><input type="submit" name="paiement" value="Paiement"></a></td>
+									</tr>
+
+									<?php
 								}
-								?>
-								<tr>
-									<td colspan="6"> <br> <b>Montant Total : <?php echo $prixTotal ; ?> € </b></td>
-								</tr>
-								<tr id="paiementButton">
-									<td colspan="6"><a href="achat.php" target=" "><input type="submit" name="paiement" value="Paiement"></a></td>
-								</tr>
-								
-								<?php
+
 							}
 							?>
+
 						</tbody>
 					</table>
 				</form>
