@@ -146,15 +146,15 @@
         if (isset($_SESSION["rank"]) && $_SESSION["rank"] == 'ADMIN' && isset($_GET['id']) && isset($_GET['modif'])) 
             {?>
                 <form method="post" action="">
-                    <section id="partieCentreTopProduits">
+                    <section id="partie-modif-flex">
 
                         <section id="partieCentreProduits">
-                            <section id="partieCentreProduitsGauche">
+                            <section id="imgSectionModif">
 
                                 <img src="imgArticle/<?php echo $resultatDonneesProduits[0][7] ?>">
 
                             </section>
-                            <section id="partieCentreProduitsDroite">
+                            <section id="modifierSection">
                                 <section class="nomDuProduit">
                                     <input type="text" name="upNameProduit" placeholder="<?php echo $resultatDonneesProduits[0][3]; ?>">
                                 </section>
@@ -167,7 +167,7 @@
                             </section>
                         </section>
                         
-                        <input type="submit" name="updateProduit" value="Modifier">
+                        <input id="modifier-produit-admin" type="submit" name="updateProduit" value="Modifier">
 
                     </section>
                 </form>

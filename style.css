@@ -1029,6 +1029,36 @@ footer{
     resize: none;
 }
 
+#modifierSection{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    border-right: 2px solid black;
+}
+
+#imgSectionModif{
+    width: 50%;
+    background-color: steelblue;
+    display: flex;
+    border-right: 1.5px solid black;
+}
+
+#imgSectionModif img{
+    width: 100%;
+}
+
+#partie-modif-flex{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#modifier-produit-admin{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
 
 /*---------------Liste des produits---------------*/
 /*---------------Liste des produits---------------*/
