@@ -27,6 +27,7 @@
     $queryListeArt = mysqli_query($connexion,$requeteListeArt);
     $resultatListeArt = mysqli_fetch_all($queryListeArt);
     var_dump($resultatListeArt);
+    $nbJeux = count($resultatListeArt);
 
 
 
@@ -167,7 +168,14 @@
                             Liste des articles achetés :
                         </section>
                         <section id="articleAcheteProfil">
-                            
+                            <?php
+                                $countJeux = 0;
+                                while($countJeux != $nbJeux)
+                                {
+                                    echo "<a href=produits.php?id=".$resultatListeArt[$countJeux][5].">".$resultatListeArt[$countJeux][8]."</a><br>";
+                                    $countJeux++;
+                                }
+                                ?>
                         </section>
                     </section>
                 </section>

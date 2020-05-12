@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('fonctions.php');
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +30,6 @@ session_start();
 
 					</form>
 					<?php
-
-					include('fonctions.php');
 					inscription();
 					?>
 				</fieldset>

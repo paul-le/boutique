@@ -408,10 +408,38 @@ body{
     margin-left: 1.90px;
 }
 
+#meilleuresVentesTopBar{
+    height:40px;
+    color: rgb(73, 73, 73);
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
 #meilleuresVentes{
     height: 250px;
-    background-color: yellow;
-    border:2px solid white
+    background-color: white;
+    border:2px solid white;
+    display: flex;
+    justify-content: space-around;
+    /* margin-top: 2%; */
+    padding-top: 2%;
+}
+
+#imgFirstPlace{
+    position: absolute;
+    width: 100px;
+    top: 1415px;
+    left: 377px;
+}
+
+#imgSecondPlace{
+    position: absolute;
+    width: 100px;
+    left: 600px;
+    top: 1415px;
 }
 
 footer{
@@ -588,6 +616,7 @@ footer{
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 
 #mainProfilSection2{
@@ -613,7 +642,7 @@ footer{
     display: flex;
     flex-direction: column;
     width: 50%;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-right: 3px black solid;
     font-family: Arial, Helvetica, sans-serif;
@@ -621,10 +650,50 @@ footer{
 
 #autreInfosProfil{
     display: flex;
+    flex-direction: column;
     width: 50%;
-    justify-content: center;
+    height: 100%;
+    align-items: center;
 }
 
+#aboveListeComProfil{
+    border-top: 1px solid black;
+    border-bottom:  1px solid black;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+#aboveListeArtProfil{
+    border-top: 1px solid black;
+    border-bottom:  1px solid black;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+#listeComProfil{
+    width: 97%;
+    height: 49%;
+    overflow-y: scroll;
+    padding: 0.5%;
+    margin-left: 3%;
+}
+
+#articleAcheteProfil{
+    height: 49%;
+    width: 97%;
+    margin-left: 3%;
+    overflow-y: scroll;
+}
+
+#articleAcheteProfil a{
+    color: grey;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 /*---------------Admin---------------*/
 /*---------------Admin---------------*/
@@ -877,30 +946,40 @@ footer{
 
 #partieCentreProduitsDroite{
     width: 50%;
-    background-color: tomato;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    border-right: 2px solid black;
 }
 
 .nomDuProduit{
     width: 100%;
-    background-color: turquoise;
     /* height: 10%; */
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 .descDuProduit{
-    width: 100%;
-    background-color: violet;
-    /* height: 75%; */
+    width: 96%;
+    height: 96%;
+    margin: 2%;
+    /* margin-top: 2%; */
     height: 450px;
 }
 
 .prixDuProduit{
     width: 100%;
-    background-color: grey;
-    /* height: 15%; */
+    background-color: rgb(206, 206, 206);
     height: 115px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #commentaireProduitSection{
@@ -1023,3 +1102,111 @@ footer{
     width: 100%;
     overflow-y: scroll;
 }
+
+
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+/*---------------Page produit---------------*/
+
+#panierMain{
+    background-color: rgba(255, 255, 255, 0.99);
+    width: 60%;
+    margin-left: 20%;
+    height: 681.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: scroll;
+}
+
+#tablePanier{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+
+#tableTopPartie td{
+    font-weight: bold;
+    width: 20%;
+    border-bottom: 3px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#panierName{
+    font-size: 35px;
+    display: flex;
+    margin-bottom: 10%;
+    margin-top: 5%;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    align-items: center;
+}
+
+#tbodyPanier{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+#generationItemPanier{
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+#panierFlex{
+    display: flex;
+}
+
+#fullFlexPanier{
+    width: 100%;
+}
+
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3bc8da;
+    border-radius: 10px;
+}
+
+#paiementButton{
+    float: right;
+    padding: 5%;
+}
+
+/*---------------Page achat---------------*/
+/*---------------Page achat---------------*/
+/*---------------Page achat---------------*/
+/*---------------Page achat---------------*/
+/*---------------Page achat---------------*/
+/*---------------Page achat---------------*/
+
+#mainAchat{
+    background-color: white;
+    width: 60%;
+    margin-left: 20%;
+    height: 681.31px;
+    overflow-y: scroll;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
